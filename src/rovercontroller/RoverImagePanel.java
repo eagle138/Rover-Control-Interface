@@ -6,7 +6,7 @@
 // PURPOSE: A simple class that extends JPanel so that an overhead
 //          representation can be drawn with camera and wheel direction.
 //
-// AUTHOR:  Author: S. Krauss
+// AUTHOR:  S. Krauss
 //******************************************************************************
 package rovercontroller;
 
@@ -15,7 +15,6 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.BorderLayout;
-import java.awt.Color;
 
 //******************************************************************************
 //                              CLASS DEFINITION

@@ -6,7 +6,7 @@
 // PURPOSE: Rover controller main class that contains the main state machine, 
 //          sets up video player, overlays, and communications with the rover.
 //
-// AUTHOR:  Author: S. Krauss
+// AUTHOR:  S. Krauss
 //******************************************************************************
 package rovercontroller;
 

@@ -6,7 +6,7 @@
 // PURPOSE: Handles the receiving of heartbeats and other commands from the
 //          rover and updates the GUI with the data received from these commands
 //
-// AUTHOR:  Author: S. Krauss
+// AUTHOR:  S. Krauss
 //******************************************************************************
 package rovercontroller;
 

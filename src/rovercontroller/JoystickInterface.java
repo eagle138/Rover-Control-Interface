@@ -6,7 +6,7 @@
 // PURPOSE: Utilizes the jInput library to collect input data from a joystick
 //          and provides methods to access that data
 //
-// AUTHOR:  Author: S. Krauss
+// AUTHOR:  S. Krauss
 //******************************************************************************
 package rovercontroller;
 

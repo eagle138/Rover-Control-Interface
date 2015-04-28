@@ -6,7 +6,7 @@
 // PURPOSE: Handles the gathering of user input from joysticks and gamepads and
 //          sends it as control commands to the rover at the set interval.
 //
-// AUTHOR:  Author: S. Krauss
+// AUTHOR:  S. Krauss
 //******************************************************************************
 package rovercontroller;
 

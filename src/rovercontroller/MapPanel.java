@@ -6,7 +6,7 @@
 // PURPOSE: A simple class that extends JPanel so that a Google Maps image or a 
 //          placeholder loading animation can be drawn on the GUI.
 //
-// AUTHOR:  Author: S. Krauss
+// AUTHOR:  S. Krauss
 //******************************************************************************
 package rovercontroller;
 

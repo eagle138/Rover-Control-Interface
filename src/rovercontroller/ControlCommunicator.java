@@ -7,7 +7,7 @@
 //          rover. Provides methods to send and receive data as well as form
 //          command strings.
 //
-// AUTHOR:  Author: S. Krauss
+// AUTHOR:  S. Krauss
 //******************************************************************************
 package rovercontroller;
 

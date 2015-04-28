@@ -6,7 +6,7 @@
 // PURPOSE: Handles the assembly and display of the of the rover control GUI. 
 //          GUI is constructed with NetBeans IDE.
 //
-// AUTHOR:  Author: S. Krauss
+// AUTHOR:  S. Krauss
 //******************************************************************************
 package rovercontroller;
 
