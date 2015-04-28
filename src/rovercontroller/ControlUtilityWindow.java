@@ -167,10 +167,12 @@ public class ControlUtilityWindow extends javax.swing.JFrame
         servoControlPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Servo Control", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         servoControlSlider.setMajorTickSpacing(5);
-        servoControlSlider.setMaximum(5000);
-        servoControlSlider.setMinorTickSpacing(10);
+        servoControlSlider.setMaximum(90);
+        servoControlSlider.setMinimum(-90);
+        servoControlSlider.setMinorTickSpacing(1);
         servoControlSlider.setSnapToTicks(true);
-        servoControlSlider.setValue(1500);
+        servoControlSlider.setToolTipText("");
+        servoControlSlider.setValue(0);
         servoControlSlider.addChangeListener(new javax.swing.event.ChangeListener()
         {
             public void stateChanged(javax.swing.event.ChangeEvent evt)
@@ -431,11 +433,11 @@ public class ControlUtilityWindow extends javax.swing.JFrame
 
         // Get the servo number and angle from the dropdown menu and slider
         int selectedServo = servoControlDropdown.getSelectedIndex();
-        double servoState = ((double)servoControlSlider.getValue())/1000.0;
+        double servoState = ((double)servoControlSlider.getValue());
         pulseWidthLabel.setText(Double.toString(servoState));
         
         // Send the JSON formatted servo command
-        ControlCommunicator.sendCommand("{\"command\":\"pwm\", \"servonum\":" + (selectedServo) + ", \"pw\":" + (servoState) + "}");
+        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (selectedServo) + ", \"angle\":" + (servoState) + "}");
     }//GEN-LAST:event_servoControlSliderStateChanged
 
     private void motorControlSliderStateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_motorControlSliderStateChanged
