@@ -68,7 +68,7 @@ public class ControlSendProcess extends Thread
                     // Determine the steering angle. Joystick axis values go
                     // from -1 to 1, so multiply by 90 degrees for a full range
                     // of steering from -90 to 90 degrees
-                    double joystickXValue = ((round((joystick.getComponentValue(2)), 2)) * 90.0);
+                    double joystickXValue = ((round((joystick.getComponentValue(2)), 2)) * 45.0);
 
                     // If the steering angle has changed
                     if (joystickXValue != steeringAngle)
@@ -104,9 +104,9 @@ public class ControlSendProcess extends Thread
                 {
                     
                     // Determine position increments from joystick position
-                    double dx = ((round((joystick.getComponentValue(0)), 2)) * 1.0);
-                    double dy = ((round((joystick.getComponentValue(1)), 2)) * 1.0);
-                    double dz = ((round((joystick.getComponentValue(2)), 2)) * 1.0);
+                    double dx = ((round((gamepad.getComponentValue(0)), 2)) * 1.0);
+                    double dy = ((round((gamepad.getComponentValue(1)), 2)) * 1.0);
+                    double dz = ((round((gamepad.getComponentValue(2)), 2)) * 1.0);
 
                     if ((dx < 0.3) && (dx > -0.3))
                     {
