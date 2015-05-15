@@ -280,7 +280,7 @@ public class ControlVideoWindow extends javax.swing.JFrame
         // Send the JSON formatted camera command
         ControlCommunicator.sendCommand(ControlCommunicator.getCameraCommandString(cameraNum, protocol, width, height, fps, bitrate));
         
-        ControlMain.gstreamerProcess = ControlMain.startGstreamer(protocol);
+        ControlMain.videoReceiveProcess = ControlMain.startVideoReceive(protocol);
         
     }//GEN-LAST:event_startStreamButtonActionPerformed
 

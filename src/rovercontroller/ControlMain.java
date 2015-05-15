@@ -35,11 +35,13 @@ public class ControlMain
     // Process declarations
     public static ControlSendProcess sendProcess;
     public static ControlReceiveProcess receiveProcess;
-    public static Process gstreamerProcess;
+    public static Process videoReceiveProcess;
+    public static Process audioReceiveProcess;
     
     // Gstreamer settings
     public static String gstreamerPath = "\"C:\\Users\\Stephen\\Google Drive\\Robo-Ops 2015 Programming\\Misc\\gstreamer\\1.0\\x86\\bin\\gst-launch-1.0.exe\"";
-    public static int udpReceivePort = 1338;
+    public static int videoReceivePort = 1338;
+    public static int audioReceivePort = 1339;
     public static int tcpConnectPort = 5001;
     
     //--------------------------------------------------------------------------
@@ -69,7 +71,8 @@ public class ControlMain
         utilityWindow = new ControlUtilityWindow();
         sendProcess = new ControlSendProcess();
         receiveProcess = new ControlReceiveProcess();
-        gstreamerProcess = startGstreamer(0);
+        videoReceiveProcess = startVideoReceive(0);
+        audioReceiveProcess = startAudioReceive();
         
         // Build and display the main display GUI by adding it to the event 
         // dispatch thread
@@ -110,7 +113,8 @@ public class ControlMain
             public void run()
             {
                 // Kill the gstreamer stream process
-                stopGstreamer(gstreamerProcess);
+                stopGstreamerProcess(videoReceiveProcess);
+                stopGstreamerProcess(audioReceiveProcess);
 
                 System.out.println("Control software shut down.");
                 System.out.println("------------------------------------------------------------------------------");
@@ -121,23 +125,22 @@ public class ControlMain
     } // main
 
     //--------------------------------------------------------------------------
-    // Name:        startGstreamer
+    // Name:        startVideoReceive
     // Description: Initializes gstreamer to receive a video stream over UDP
-    // Arguments:   - String gstreamerPath, path to gst-launch-1.0.exe
-    //              - int streamPort, port on which to recieve UDP video stream
+    // Arguments:   - int protocol, 0 for UDP and 1 for TCP video stream
     // Returns:     - Process, the gstreamer process
     //--------------------------------------------------------------------------
-    public static Process startGstreamer(int protocol)
+    public static Process startVideoReceive(int protocol)
     {
 
         // Stop the any currently running gstreamer process
-        stopGstreamer(gstreamerProcess);
+        stopGstreamerProcess(videoReceiveProcess);
         
         // Form the command used to start gstreamer to receive the video stream
         String gstreamerCommand;
         if(protocol == 0)
         {
-            gstreamerCommand = gstreamerPath + " udpsrc port=" + udpReceivePort + " ! application/x-rtp, payload=96 ! rtph264depay ! h264parse ! avdec_h264 ! autovideosink sync=false";
+            gstreamerCommand = gstreamerPath + " udpsrc port=" + videoReceivePort + " ! application/x-rtp, payload=96 ! rtph264depay ! h264parse ! avdec_h264 ! autovideosink sync=false";
         }
         else
         {
@@ -169,15 +172,57 @@ public class ControlMain
 
         return streamProcess;
 
-    } // startGstreamer
+    } // startVideoReceive
+    
+    //--------------------------------------------------------------------------
+    // Name:        startAudioReceive
+    // Description: Initializes gstreamer to receive an audio stream over UDP
+    // Arguments:   N/A
+    // Returns:     - Process, the gstreamer process
+    //--------------------------------------------------------------------------
+    public static Process startAudioReceive()
+    {
+
+        // Stop the any currently running gstreamer process
+        stopGstreamerProcess(audioReceiveProcess);
+        
+        // Form the command used to start gstreamer to receive the audio stream
+        String gstreamerCommand = gstreamerPath + "udpsrc port=" + audioReceivePort + " caps=\"application/x-rtp\" ! rtppcmadepay ! alawdec ! autoaudiosink";
+        
+        // Set up a variable for the gstreamer process that will be returned
+        Process streamProcess = null;
+
+        // Get the current runtime to execute the gstreamer command
+        Runtime runtime = Runtime.getRuntime();
+
+        try
+        {
+
+            // Execute the gstreamer command to start gstreamer
+            streamProcess = runtime.exec(gstreamerCommand);
+            System.out.println("Started receiving gstreamer audio stream.");
+
+        } // try
+        catch (Exception ex)
+        {
+            
+            System.out.println(ex);
+            
+            System.out.println("ERROR: gstreamer failed to start.");
+
+        } // catch
+
+        return streamProcess;
+
+    } // startAudioReceive
 
     //--------------------------------------------------------------------------
-    // Name:        stopGstreamer
-    // Description: Stops the gstreamer video stream process
-    // Arguments:   - Process gstreamerProcess, gstreamer process to stop
+    // Name:        stopGstreamerProcess
+    // Description: Stops the gstreamer stream process
+    // Arguments:   - Process videoReceiveProcess, gstreamer process to stop
     // Returns:     N/A
     //--------------------------------------------------------------------------
-    public static void stopGstreamer(Process gstreamerProcess)
+    public static void stopGstreamerProcess(Process gstreamerProcess)
     {
         if(gstreamerProcess != null)
         {
@@ -185,6 +230,6 @@ public class ControlMain
             gstreamerProcess.destroy();
         }
 
-    } // stopGstreamer
+    } // stopGstreamerProcess
 
 } // ControlMain class
