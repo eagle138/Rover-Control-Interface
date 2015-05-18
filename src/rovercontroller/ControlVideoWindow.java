@@ -25,6 +25,7 @@ public class ControlVideoWindow extends javax.swing.JFrame
     int height = 480;
     int fps = 20;
     int bitrate = 500000;
+    int iframe = 1000;
    
     //--------------------------------------------------------------------------
     // ControlGui Constructor
@@ -110,6 +111,8 @@ public class ControlVideoWindow extends javax.swing.JFrame
         protocolLabel = new javax.swing.JLabel();
         protocolDropdown = new javax.swing.JComboBox();
         switchCameraButton = new javax.swing.JButton();
+        iframeLabel = new javax.swing.JLabel();
+        iframeField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Rover Video Control");
@@ -181,6 +184,19 @@ public class ControlVideoWindow extends javax.swing.JFrame
             }
         });
 
+        iframeLabel.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        iframeLabel.setText("Iframe:");
+
+        iframeField.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        iframeField.setText("1000");
+        iframeField.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                iframeFieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout videoStreamControlPanelLayout = new javax.swing.GroupLayout(videoStreamControlPanel);
         videoStreamControlPanel.setLayout(videoStreamControlPanelLayout);
         videoStreamControlPanelLayout.setHorizontalGroup(
@@ -207,7 +223,11 @@ public class ControlVideoWindow extends javax.swing.JFrame
                             .addComponent(widthField, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(bitrateField)))
                     .addComponent(stopStreamButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(switchCameraButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(switchCameraButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(videoStreamControlPanelLayout.createSequentialGroup()
+                        .addComponent(iframeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(iframeField)))
                 .addContainerGap())
         );
         videoStreamControlPanelLayout.setVerticalGroup(
@@ -237,6 +257,10 @@ public class ControlVideoWindow extends javax.swing.JFrame
                 .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(bitrateField)
                     .addComponent(bitrateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(iframeField)
+                    .addComponent(iframeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(startStreamButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -276,9 +300,10 @@ public class ControlVideoWindow extends javax.swing.JFrame
         height = Integer.parseInt(heightField.getText());
         fps = Integer.parseInt(framerateField.getText());
         bitrate = Integer.parseInt(bitrateField.getText());
+        iframe = Integer.parseInt(iframeField.getText());
 
         // Send the JSON formatted camera command
-        ControlCommunicator.sendCommand(ControlCommunicator.getCameraCommandString(cameraNum, protocol, width, height, fps, bitrate));
+        ControlCommunicator.sendCommand(ControlCommunicator.getCameraCommandString(cameraNum, protocol, width, height, fps, bitrate, iframe));
         
         ControlMain.videoReceiveProcess = ControlMain.startVideoReceive(protocol);
         
@@ -297,6 +322,11 @@ public class ControlVideoWindow extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_switchCameraButtonActionPerformed
 
+    private void iframeFieldActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_iframeFieldActionPerformed
+    {//GEN-HEADEREND:event_iframeFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_iframeFieldActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bitrateField;
     private javax.swing.JLabel bitrateLabel;
@@ -306,6 +336,8 @@ public class ControlVideoWindow extends javax.swing.JFrame
     private javax.swing.JLabel framerateLabel;
     private javax.swing.JTextField heightField;
     private javax.swing.JLabel heightLabel;
+    private javax.swing.JTextField iframeField;
+    private javax.swing.JLabel iframeLabel;
     private javax.swing.JComboBox protocolDropdown;
     private javax.swing.JLabel protocolLabel;
     private javax.swing.JButton startStreamButton;

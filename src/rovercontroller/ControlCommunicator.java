@@ -182,9 +182,10 @@ public class ControlCommunicator
     //              - int fps, framerate of video stream in frames per second
     //              - int maxBitrate, maximum bitrate of video stream in bits
     //                bits per second
+    //              - int iframeInt, Iframe interval in seconds
     // Returns:     - String, JSON formatted camera command string
     //--------------------------------------------------------------------------
-    public static String getCameraCommandString(int cameraNum, int protocol, int width, int height, int fps, int maxBitrate)
+    public static String getCameraCommandString(int cameraNum, int protocol, int width, int height, int fps, int maxBitrate, int iframeInt)
     {
 
         // JSON command string to be returned
@@ -202,6 +203,7 @@ public class ControlCommunicator
             jsonObject.put("h", height);
             jsonObject.put("fps", fps);
             jsonObject.put("bitrate", maxBitrate);
+            jsonObject.put("iframe", iframeInt);
 
             // Write the JSON onject to a string
             StringWriter stringWriter = new StringWriter();

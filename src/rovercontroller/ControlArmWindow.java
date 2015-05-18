@@ -536,7 +536,8 @@ public class ControlArmWindow extends javax.swing.JFrame
         //ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_AZIMUTH) + ", \"angle\":" + (0.0) + "}");
        //ControlCommunicator.sendCommand("{\"command\":\"clawinc\", \"dx\":" + (-1.0) + ", \"dy\":" + (0.0) + ", \"dz\":" + (0.0) + "}");
         
-    ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (6) + ", \"angle\":" + (0.0) + "}");
+    //ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (6) + ", \"angle\":" + (0.0) + "}");
+    ControlCommunicator.sendCommand("{\"command\":\"gpiotog\", \"pin\":" + (12) + "}");
         
     }//GEN-LAST:event_homeButtonActionPerformed
 

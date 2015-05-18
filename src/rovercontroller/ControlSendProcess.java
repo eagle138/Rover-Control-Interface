@@ -69,6 +69,7 @@ public class ControlSendProcess extends Thread
                     // from -1 to 1, so multiply by 90 degrees for a full range
                     // of steering from -90 to 90 degrees
                     double joystickXValue = ((round((joystick.getComponentValue(2)), 2)) * 45.0);
+                    System.out.println("Angle: " + joystickXValue);
 
                     // If the steering angle has changed
                     if (joystickXValue != steeringAngle)
