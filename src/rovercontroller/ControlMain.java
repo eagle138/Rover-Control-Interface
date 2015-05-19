@@ -140,7 +140,7 @@ public class ControlMain
         String gstreamerCommand;
         if(protocol == 0)
         {
-            gstreamerCommand = gstreamerPath + " udpsrc port=" + videoReceivePort + " ! application/x-rtp, payload=96 ! rtph264depay ! h264parse ! avdec_h264 ! autovideosink sync=false";
+            gstreamerCommand = gstreamerPath + " udpsrc port=" + videoReceivePort + " ! h264parse ! avdec_h264 ! autovideosink sync=false";
         }
         else
         {

@@ -27,8 +27,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="videoStreamControlPanel" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="videoStreamControlPanel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -63,37 +63,41 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="startStreamButton" max="32767" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="stopStreamButton" alignment="0" max="32767" attributes="0"/>
+                          <Component id="startStreamButton" alignment="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="heightLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="protocolLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="framerateLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="cameraNumLabel" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="widthLabel" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="cameraLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="protocolLabel" pref="77" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="protocolDropdown" max="32767" attributes="0"/>
+                                      <Component id="cameraDropdown" pref="98" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <Component id="bitrateLabel" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="heightField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="framerateField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="cameraNumDropdown" alignment="0" max="32767" attributes="0"/>
-                              <Component id="protocolDropdown" alignment="1" max="32767" attributes="0"/>
-                              <Component id="widthField" alignment="1" max="32767" attributes="0"/>
-                              <Component id="bitrateField" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="iframeLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="bitrateLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="framerateLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="resolutionLabel" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="framerateDropdown" max="32767" attributes="0"/>
+                                      <Component id="resolutionDropdown" pref="98" max="32767" attributes="0"/>
+                                      <Component id="bitrateField" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Component id="iframeField" alignment="1" min="-2" pref="98" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="stopStreamButton" alignment="0" max="32767" attributes="0"/>
-                      <Component id="switchCameraButton" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="iframeLabel" min="-2" pref="77" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="iframeField" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="switchCameraButton" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -101,39 +105,34 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="cameraNumDropdown" min="-2" max="-2" attributes="0"/>
-                      <Component id="cameraNumLabel" min="-2" pref="20" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="cameraLabel" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
+                      <Component id="cameraDropdown" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="protocolDropdown" max="32767" attributes="0"/>
-                      <Component id="protocolLabel" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="protocolLabel" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="protocolDropdown" alignment="3" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="widthField" max="32767" attributes="0"/>
-                      <Component id="widthLabel" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="resolutionLabel" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="resolutionDropdown" alignment="3" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="heightField" max="32767" attributes="0"/>
-                      <Component id="heightLabel" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="framerateLabel" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="framerateDropdown" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="framerateField" max="32767" attributes="0"/>
-                      <Component id="framerateLabel" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="bitrateLabel" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="bitrateField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="bitrateField" max="32767" attributes="0"/>
-                      <Component id="bitrateLabel" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="iframeField" alignment="0" max="32767" attributes="0"/>
-                      <Component id="iframeLabel" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="iframeLabel" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="iframeField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="startStreamButton" min="-2" max="-2" attributes="0"/>
@@ -147,14 +146,6 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="heightLabel">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Courier New" size="11" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Height:"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="startStreamButton">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -174,44 +165,12 @@
             <Property name="text" type="java.lang.String" value="500000"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="framerateField">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Courier New" size="11" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="20"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="heightField">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Courier New" size="11" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="480"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="bitrateLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Courier New" size="11" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Bitrate:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="widthLabel">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Courier New" size="11" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Width:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="widthField">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Courier New" size="11" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="640"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="framerateLabel">
@@ -233,20 +192,35 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stopStreamButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="cameraNumLabel">
+        <Component class="javax.swing.JLabel" name="cameraLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Courier New" size="11" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Camera Num:"/>
+            <Property name="text" type="java.lang.String" value="Camera:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cameraNumDropdown">
+        <Component class="javax.swing.JComboBox" name="resolutionDropdown">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
-                <StringItem index="0" value="Camera 0"/>
-                <StringItem index="1" value="Camera 1"/>
+              <StringArray count="17">
+                <StringItem index="0" value="160x90"/>
+                <StringItem index="1" value="160x120"/>
+                <StringItem index="2" value="176x144"/>
+                <StringItem index="3" value="320x180"/>
+                <StringItem index="4" value="320x240"/>
+                <StringItem index="5" value="352x288"/>
+                <StringItem index="6" value="432x240"/>
+                <StringItem index="7" value="640x360"/>
+                <StringItem index="8" value="640x480"/>
+                <StringItem index="9" value="800x448"/>
+                <StringItem index="10" value="800x600"/>
+                <StringItem index="11" value="864x480"/>
+                <StringItem index="12" value="960x720"/>
+                <StringItem index="13" value="1024x576"/>
+                <StringItem index="14" value="1280x720"/>
+                <StringItem index="15" value="1600x896"/>
+                <StringItem index="16" value="1920x1080"/>
               </StringArray>
             </Property>
           </Properties>
@@ -295,9 +269,40 @@
             </Property>
             <Property name="text" type="java.lang.String" value="1000"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="iframeFieldActionPerformed"/>
-          </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cameraDropdown">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="2">
+                <StringItem index="0" value="Camera 0"/>
+                <StringItem index="1" value="Camera 1"/>
+              </StringArray>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="resolutionLabel">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Courier New" size="11" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Resolution:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="framerateDropdown">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="8">
+                <StringItem index="0" value="30"/>
+                <StringItem index="1" value="24"/>
+                <StringItem index="2" value="20"/>
+                <StringItem index="3" value="15"/>
+                <StringItem index="4" value="10"/>
+                <StringItem index="5" value="7"/>
+                <StringItem index="6" value="5"/>
+                <StringItem index="7" value=" "/>
+              </StringArray>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

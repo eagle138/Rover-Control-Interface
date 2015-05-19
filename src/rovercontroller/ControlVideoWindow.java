@@ -15,17 +15,6 @@ package rovercontroller;
 //******************************************************************************
 public class ControlVideoWindow extends javax.swing.JFrame
 {
-
-    //--------------------------------------------------------------------------
-    // Class Variables
-    //--------------------------------------------------------------------------
-    int cameraNum = 0;
-    int protocol = 0;
-    int width = 640;
-    int height = 480;
-    int fps = 20;
-    int bitrate = 500000;
-    int iframe = 1000;
    
     //--------------------------------------------------------------------------
     // ControlGui Constructor
@@ -96,32 +85,27 @@ public class ControlVideoWindow extends javax.swing.JFrame
     {
 
         videoStreamControlPanel = new javax.swing.JPanel();
-        heightLabel = new javax.swing.JLabel();
         startStreamButton = new javax.swing.JButton();
         bitrateField = new javax.swing.JTextField();
-        framerateField = new javax.swing.JTextField();
-        heightField = new javax.swing.JTextField();
         bitrateLabel = new javax.swing.JLabel();
-        widthLabel = new javax.swing.JLabel();
-        widthField = new javax.swing.JTextField();
         framerateLabel = new javax.swing.JLabel();
         stopStreamButton = new javax.swing.JButton();
-        cameraNumLabel = new javax.swing.JLabel();
-        cameraNumDropdown = new javax.swing.JComboBox();
+        cameraLabel = new javax.swing.JLabel();
+        resolutionDropdown = new javax.swing.JComboBox();
         protocolLabel = new javax.swing.JLabel();
         protocolDropdown = new javax.swing.JComboBox();
         switchCameraButton = new javax.swing.JButton();
         iframeLabel = new javax.swing.JLabel();
         iframeField = new javax.swing.JTextField();
+        cameraDropdown = new javax.swing.JComboBox();
+        resolutionLabel = new javax.swing.JLabel();
+        framerateDropdown = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Rover Video Control");
         setResizable(false);
 
         videoStreamControlPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Video Stream Control", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
-
-        heightLabel.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        heightLabel.setText("Height:");
 
         startStreamButton.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         startStreamButton.setText("Start Stream");
@@ -136,20 +120,8 @@ public class ControlVideoWindow extends javax.swing.JFrame
         bitrateField.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         bitrateField.setText("500000");
 
-        framerateField.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        framerateField.setText("20");
-
-        heightField.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        heightField.setText("480");
-
         bitrateLabel.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         bitrateLabel.setText("Bitrate:");
-
-        widthLabel.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        widthLabel.setText("Width:");
-
-        widthField.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        widthField.setText("640");
 
         framerateLabel.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         framerateLabel.setText("Framerate:");
@@ -164,10 +136,10 @@ public class ControlVideoWindow extends javax.swing.JFrame
             }
         });
 
-        cameraNumLabel.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        cameraNumLabel.setText("Camera Num:");
+        cameraLabel.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        cameraLabel.setText("Camera:");
 
-        cameraNumDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Camera 0", "Camera 1" }));
+        resolutionDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "160x90", "160x120", "176x144", "320x180", "320x240", "352x288", "432x240", "640x360", "640x480", "800x448", "800x600", "864x480", "960x720", "1024x576", "1280x720", "1600x896", "1920x1080" }));
 
         protocolLabel.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         protocolLabel.setText("Protocol:");
@@ -189,13 +161,13 @@ public class ControlVideoWindow extends javax.swing.JFrame
 
         iframeField.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         iframeField.setText("1000");
-        iframeField.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                iframeFieldActionPerformed(evt);
-            }
-        });
+
+        cameraDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Camera 0", "Camera 1" }));
+
+        resolutionLabel.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        resolutionLabel.setText("Resolution:");
+
+        framerateDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30", "24", "20", "15", "10", "7", "5", " " }));
 
         javax.swing.GroupLayout videoStreamControlPanelLayout = new javax.swing.GroupLayout(videoStreamControlPanel);
         videoStreamControlPanel.setLayout(videoStreamControlPanelLayout);
@@ -204,63 +176,60 @@ public class ControlVideoWindow extends javax.swing.JFrame
             .addGroup(videoStreamControlPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(startStreamButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(videoStreamControlPanelLayout.createSequentialGroup()
+                    .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(stopStreamButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(startStreamButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(heightLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(protocolLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(framerateLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cameraNumLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(widthLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(bitrateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(heightField)
-                            .addComponent(framerateField)
-                            .addComponent(cameraNumDropdown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(protocolDropdown, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(widthField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(bitrateField)))
-                    .addComponent(stopStreamButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(switchCameraButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(videoStreamControlPanelLayout.createSequentialGroup()
-                        .addComponent(iframeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(iframeField)))
-                .addContainerGap())
+                            .addGroup(videoStreamControlPanelLayout.createSequentialGroup()
+                                .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(cameraLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(protocolLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
+                                .addGap(4, 4, 4)
+                                .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(protocolDropdown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cameraDropdown, 0, 98, Short.MAX_VALUE)))
+                            .addGroup(videoStreamControlPanelLayout.createSequentialGroup()
+                                .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(iframeLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bitrateLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(framerateLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(resolutionLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(framerateDropdown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(resolutionDropdown, 0, 98, Short.MAX_VALUE)
+                                    .addComponent(bitrateField)))
+                            .addComponent(iframeField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(switchCameraButton, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         videoStreamControlPanelLayout.setVerticalGroup(
             videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, videoStreamControlPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cameraNumDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cameraNumLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cameraLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cameraDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(protocolDropdown)
-                    .addComponent(protocolLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(protocolLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(protocolDropdown))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(widthField)
-                    .addComponent(widthLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(resolutionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(resolutionDropdown))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(heightField)
-                    .addComponent(heightLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(framerateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(framerateDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(framerateField)
-                    .addComponent(framerateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bitrateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bitrateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(bitrateField)
-                    .addComponent(bitrateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(iframeField)
-                    .addComponent(iframeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(iframeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iframeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(startStreamButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -276,8 +245,8 @@ public class ControlVideoWindow extends javax.swing.JFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(videoStreamControlPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(videoStreamControlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,18 +262,23 @@ public class ControlVideoWindow extends javax.swing.JFrame
     private void startStreamButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_startStreamButtonActionPerformed
     {//GEN-HEADEREND:event_startStreamButtonActionPerformed
 
-        // Get the video stream parameters from the text fields
-        cameraNum = cameraNumDropdown.getSelectedIndex();
-        protocol = protocolDropdown.getSelectedIndex();
-        width = Integer.parseInt(widthField.getText());
-        height = Integer.parseInt(heightField.getText());
-        fps = Integer.parseInt(framerateField.getText());
-        bitrate = Integer.parseInt(bitrateField.getText());
-        iframe = Integer.parseInt(iframeField.getText());
-
-        // Send the JSON formatted camera command
-        ControlCommunicator.sendCommand(ControlCommunicator.getCameraCommandString(cameraNum, protocol, width, height, fps, bitrate, iframe));
+        // Get the video stream parameters from the text fields and dropdowns
+        int cameraNum = cameraDropdown.getSelectedIndex();
+        int protocol = protocolDropdown.getSelectedIndex();
+        String resolution = (String) resolutionDropdown.getSelectedItem();
+        int framerate = Integer.parseInt((String) framerateDropdown.getSelectedItem());
+        int bitrate = Integer.parseInt(bitrateField.getText());
+        int iframe = Integer.parseInt(iframeField.getText());
         
+        // Parse the width and height from the resolution
+        String[] resolutionParts = resolution.split("x");
+        int width = Integer.parseInt(resolutionParts[0]);
+        int height = Integer.parseInt(resolutionParts[1]);
+        
+        // Send the JSON formatted camera command
+        ControlCommunicator.sendCommand(ControlCommunicator.getCameraCommandString(cameraNum, protocol, width, height, framerate, bitrate, iframe));
+        
+        // Start receiving video
         ControlMain.videoReceiveProcess = ControlMain.startVideoReceive(protocol);
         
     }//GEN-LAST:event_startStreamButtonActionPerformed
@@ -322,29 +296,22 @@ public class ControlVideoWindow extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_switchCameraButtonActionPerformed
 
-    private void iframeFieldActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_iframeFieldActionPerformed
-    {//GEN-HEADEREND:event_iframeFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_iframeFieldActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bitrateField;
     private javax.swing.JLabel bitrateLabel;
-    private javax.swing.JComboBox cameraNumDropdown;
-    private javax.swing.JLabel cameraNumLabel;
-    private javax.swing.JTextField framerateField;
+    private javax.swing.JComboBox cameraDropdown;
+    private javax.swing.JLabel cameraLabel;
+    private javax.swing.JComboBox framerateDropdown;
     private javax.swing.JLabel framerateLabel;
-    private javax.swing.JTextField heightField;
-    private javax.swing.JLabel heightLabel;
     private javax.swing.JTextField iframeField;
     private javax.swing.JLabel iframeLabel;
     private javax.swing.JComboBox protocolDropdown;
     private javax.swing.JLabel protocolLabel;
+    private javax.swing.JComboBox resolutionDropdown;
+    private javax.swing.JLabel resolutionLabel;
     private javax.swing.JButton startStreamButton;
     private javax.swing.JButton stopStreamButton;
     private javax.swing.JButton switchCameraButton;
     private javax.swing.JPanel videoStreamControlPanel;
-    private javax.swing.JTextField widthField;
-    private javax.swing.JLabel widthLabel;
     // End of variables declaration//GEN-END:variables
 }
