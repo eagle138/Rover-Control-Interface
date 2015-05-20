@@ -279,7 +279,7 @@ public class ControlVideoWindow extends javax.swing.JFrame
         ControlCommunicator.sendCommand(ControlCommunicator.getCameraCommandString(cameraNum, protocol, width, height, framerate, bitrate, iframe));
         
         // Start receiving video
-        ControlMain.videoReceiveProcess = ControlMain.startVideoReceive(protocol);
+        ControlMain.streamInterface.startVideoReceive();
         
     }//GEN-LAST:event_startStreamButtonActionPerformed
 

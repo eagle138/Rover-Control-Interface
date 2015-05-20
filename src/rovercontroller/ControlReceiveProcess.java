@@ -62,16 +62,16 @@ public class ControlReceiveProcess extends Thread
                     Double cpu = (Double) receivedCommandJson.get("cpu");
 
                     // Update the GUI with the received information
-                    ControlMain.controlGui.setConnected(ControlCommunicator.roverIpAddress);
-                    ControlMain.controlGui.setGpsData(lat, lon, alt, spd);
-                    ControlMain.controlGui.setCpuData(cpu);
+                    ControlMain.mainWindow.setConnected(ControlCommunicator.roverIpAddress);
+                    ControlMain.mainWindow.setGpsData(lat, lon, alt, spd);
+                    ControlMain.mainWindow.setCpuData(cpu);
                     
                     // If the Latitude and Longitude are 0.0, there is no lock
                     if (lat == 0.0 && lon == 0.0)
                     {
                         
                         // Set the map panel to display no lock
-                        ControlMain.controlGui.setMapUrl("None");
+                        ControlMain.mainWindow.setMapUrl("None");
                         
                     } // if
                     else
@@ -83,7 +83,7 @@ public class ControlReceiveProcess extends Thread
                         String mapRequestUrl = "https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lon + "&zoom=20&size=1000x1000&maptype=satellite&format=jpg&markers=color:red|" + lat + "," + lon + "&key=" + API_KEY;
 
                         // Set the map panel to display the GPS map
-                        ControlMain.controlGui.setMapUrl(mapRequestUrl);
+                        ControlMain.mainWindow.setMapUrl(mapRequestUrl);
                         
                     } // else
 

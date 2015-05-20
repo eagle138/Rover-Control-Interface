@@ -133,7 +133,7 @@ public class ControlCommunicator
             System.out.println("ERROR: Could not connect to rover!");
 
             // Set the connection display to disconnected
-            ControlMain.controlGui.setDisconnected();
+            ControlMain.mainWindow.setDisconnected();
 
         } // catch
 
