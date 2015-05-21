@@ -32,9 +32,6 @@ public class ControlMain
     // Command send and receive process declarations
     public static ControlSendProcess sendProcess;
     public static ControlReceiveProcess receiveProcess;
-
-    // Video and audio stream interface declaration
-    public static ControlStreamInterface streamInterface;
     
     // Gstreamer settings
     public static String gstreamerPath = "\"C:\\Users\\Stephen\\Google Drive\\Robo-Ops 2015 Programming\\Misc\\gstreamer\\1.0\\x86\\bin\\gst-launch-1.0.exe\"";
@@ -62,12 +59,9 @@ public class ControlMain
         sendProcess = new ControlSendProcess();
         receiveProcess = new ControlReceiveProcess();
         
-        // Set up the video and audio stream interface instances
-        streamInterface = new ControlStreamInterface();
-        
         // Start receiving video and audio streams
-        streamInterface.startVideoReceive();
-        streamInterface.startAudioReceive();
+        ControlStreamInterface.startVideoReceive();
+        ControlStreamInterface.startAudioReceive();
         
         // Build and display the main display GUI by adding it to the event 
         // dispatch thread
@@ -108,8 +102,8 @@ public class ControlMain
             public void run()
             {
                 // Kill the gstreamer stream process
-                streamInterface.stopVideoReceive();
-                streamInterface.stopAudioReceive();
+                ControlStreamInterface.stopVideoReceive();
+                ControlStreamInterface.stopAudioReceive();
 
                 System.out.println("Control software shut down.");
                 System.out.println("------------------------------------------------------------------------------");

@@ -279,7 +279,7 @@ public class ControlVideoWindow extends javax.swing.JFrame
         ControlCommunicator.sendCommand(ControlCommunicator.getCameraCommandString(cameraNum, protocol, width, height, framerate, bitrate, iframe));
         
         // Start receiving video
-        ControlMain.streamInterface.startVideoReceive();
+        ControlStreamInterface.startVideoReceive();
         
     }//GEN-LAST:event_startStreamButtonActionPerformed
 
@@ -287,7 +287,7 @@ public class ControlVideoWindow extends javax.swing.JFrame
     {//GEN-HEADEREND:event_stopStreamButtonActionPerformed
 
         // Send the JSON formatted camera stop command
-        ControlCommunicator.sendCommand("{\"command\":\"camerastop\"}");
+        ControlCommunicator.sendCommand("{\"command\":\"videostop\"}");
         
     }//GEN-LAST:event_stopStreamButtonActionPerformed
 

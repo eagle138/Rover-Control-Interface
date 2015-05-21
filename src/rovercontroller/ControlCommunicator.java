@@ -196,7 +196,7 @@ public class ControlCommunicator
 
             // Assemble the JSON object keys and values
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("command", "camera");
+            jsonObject.put("command", "videostart");
             jsonObject.put("num", cameraNum);
             jsonObject.put("proto", protocol);
             jsonObject.put("w", width);
