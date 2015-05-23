@@ -25,13 +25,32 @@ public class ControlSendProcess extends Thread
     
     // Interval at which to gather input data and send it to the rover. Lower
     // interval gives smoother control but has a higher datarate.
-    int SEND_INTERVAL_MS = 200;
+    int sendIntervalMs = 200;
     
     // Angle of steering servos
     double steeringAngle = 0;
 
     // Speed of the rover motors
     double motorSpeed = 0;
+    
+    // Joystick and gamepad minimum values. Input valued below this will be
+    // ignored to help prevent cases where the joysticks don't return exactly
+    // to zero when let go.
+    double joystickMinValue = 0.3;
+    double gamepadMinValue = 0.3;
+    
+    // Maximum steering angle for the steering controls
+    double maxSteeringAngle = 30;
+    
+    // Maximum motor speed percentage (1.0 = 100%)
+    double maxMotorSpeed = 1.0;
+    
+    // Arm movement speed multiplier. Makes the gamepad increment the arm
+    // position more quickly
+    double armSpeed = 1.0;
+    
+    // Steering angles and motor speeds for the previous loop iteration
+    double 
 
     //--------------------------------------------------------------------------
     // Name:        run
@@ -65,11 +84,20 @@ public class ControlSendProcess extends Thread
                 if (joystick.connected == true)
                 {
 
-                    // Determine the steering angle. Joystick axis values go
-                    // from -1 to 1, so multiply by 90 degrees for a full range
-                    // of steering from -90 to 90 degrees
-                    double joystickXValue = ((round((joystick.getComponentValue(2)), 2)) * 45.0);
-                    System.out.println("Angle: " + joystickXValue);
+                    double oldSteeringAngle;
+                    
+                    // Get the joystick axis values
+                    double joystickXValue = gamepad.getComponentValue(2);
+                    double joystickYValue = gamepad.getComponentValue(1);
+                         
+                    // Ignore joystick values under a certain 
+                    if ((joystickXValue < 0.3) && (joystickXValue > -0.3)) joystickXValue = 0;
+                    if ((joystickYValue < 0.3) && (joystickYValue > -0.3)) joystickYValue = 0;  
+                    
+                    // Round the joystick axis values and multiply by the 
+                    // maximum values for steering and motor speed
+                    double steeringAngle = round(joystickXValue, 2) * maxSteeringAngle;
+                    double motorSpeed = round(joystickYValue, 2) * maxMotorSpeed;
 
                     // If the steering angle has changed
                     if (joystickXValue != steeringAngle)
@@ -81,11 +109,6 @@ public class ControlSendProcess extends Thread
                         ControlCommunicator.sendCommand("{\"command\":\"steer\", \"angle\":" + steeringAngle + "}");
                         
                     } // if
-                    
-                    // Determine the motor speed value. Since joystick axis
-                    // values go from -1 to 1, and so does the motor speed
-                    // command, the axis value doesn't have to be adjusted.
-                    double joystickYValue = round(joystick.getComponentValue(1), 2);
 
                     // If the motor speed has changed
                     if (joystickYValue != motorSpeed)
@@ -104,29 +127,27 @@ public class ControlSendProcess extends Thread
                 if (gamepad.connected == true)
                 {
                     
-                    // Determine position increments from joystick position
-                    double dx = ((round((gamepad.getComponentValue(0)), 2)) * 1.0);
-                    double dy = ((round((gamepad.getComponentValue(1)), 2)) * 1.0);
-                    double dz = ((round((gamepad.getComponentValue(2)), 2)) * 1.0);
-
-                    if ((dx < 0.3) && (dx > -0.3))
-                    {
-                        dx = 0;
-                    }
-
-                    if ((dy < 0.3) && (dy > -0.3))
-                    {
-                        dy = 0;
-                    }
+                    // Get the gamepad axis values
+                    double gamepadXValue = gamepad.getComponentValue(0);
+                    double gamepadYValue = gamepad.getComponentValue(1);
+                    double gamepadZValue = gamepad.getComponentValue(2);
+                         
+                    // Ignore joystick values under a certain 
+                    if ((gamepadXValue < 0.3) && (gamepadXValue > -0.3)) gamepadXValue = 0;
+                    if ((gamepadYValue < 0.3) && (gamepadYValue > -0.3)) gamepadYValue = 0;  
+                    if ((gamepadZValue < 0.3) && (gamepadZValue > -0.3)) gamepadZValue = 0;
                     
-                    if ((dz < 0.3) && (dz > -0.3))
-                    {
-                        dz = 0;
-                    }
+                    // Round the gamepad axis values and multiply by the arm
+                    // movement speed setting
+                    double dx = round(gamepadXValue, 2) * armSpeed;
+                    double dy = round(gamepadYValue, 2) * armSpeed;
+                    double dz = round(gamepadZValue, 2) * armSpeed;
 
+                    // Only send the command if one of the increments is nonzero
                     if ((dx != 0) || (dy != 0) || (dz != 0))
                     {
 
+                        // Send the arm position increment command
                         ControlCommunicator.sendCommand("{\"command\":\"clawinc\", \"dx\":" + (dx) + ", \"dy\":" + (dy) + ", \"dz\":" + (dz) + "}");
 
                     } // if
@@ -140,10 +161,12 @@ public class ControlSendProcess extends Thread
             // datarate usage
             try
             {
-                sleep(SEND_INTERVAL_MS);
-            } catch (Exception ex)
+                sleep(sendIntervalMs);
+            } // try
+            catch (Exception ex)
             {
-            }
+                System.out.println("ERROR: Exception during thread sleep!");
+            } // catch
 
         } // while
 
