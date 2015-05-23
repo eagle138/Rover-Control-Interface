@@ -26,13 +26,7 @@ public class ControlSendProcess extends Thread
     // Interval at which to gather input data and send it to the rover. Lower
     // interval gives smoother control but has a higher datarate.
     int sendIntervalMs = 200;
-    
-    // Angle of steering servos
-    double steeringAngle = 0;
-
-    // Speed of the rover motors
-    double motorSpeed = 0;
-    
+        
     // Joystick and gamepad minimum values. Input valued below this will be
     // ignored to help prevent cases where the joysticks don't return exactly
     // to zero when let go.
@@ -48,9 +42,6 @@ public class ControlSendProcess extends Thread
     // Arm movement speed multiplier. Makes the gamepad increment the arm
     // position more quickly
     double armSpeed = 1.0;
-    
-    // Steering angles and motor speeds for the previous loop iteration
-    double 
 
     //--------------------------------------------------------------------------
     // Name:        run
@@ -66,6 +57,10 @@ public class ControlSendProcess extends Thread
 
         System.out.println("Control send thread started.");
 
+        // Steering angles and motor speeds for the previous loop iteration
+        double prevSteeringAngle = 0;
+        double prevMotorAngle = 0;
+        
         // Loop to continually check for user input from gamepads and joysticks
         // and send it to the rover at the defined interval.
         while (true)
@@ -83,8 +78,6 @@ public class ControlSendProcess extends Thread
                 // If a joystick is connected
                 if (joystick.connected == true)
                 {
-
-                    double oldSteeringAngle;
                     
                     // Get the joystick axis values
                     double joystickXValue = gamepad.getComponentValue(2);
@@ -100,7 +93,7 @@ public class ControlSendProcess extends Thread
                     double motorSpeed = round(joystickYValue, 2) * maxMotorSpeed;
 
                     // If the steering angle has changed
-                    if (joystickXValue != steeringAngle)
+                    if (steeringAngle != prevSteeringAngle)
                     {
                         
                         steeringAngle = joystickXValue;
@@ -111,7 +104,7 @@ public class ControlSendProcess extends Thread
                     } // if
 
                     // If the motor speed has changed
-                    if (joystickYValue != motorSpeed)
+                    if (motorSpeed != prevMotorAngle)
                     {
 
                         motorSpeed = joystickYValue;
