@@ -312,7 +312,7 @@ public class ControlArmWindow extends javax.swing.JFrame
 
         clawSlider.setMajorTickSpacing(1);
         clawSlider.setMaximum(90);
-        clawSlider.setMinimum(-90);
+        clawSlider.setMinimum(-180);
         clawSlider.setMinorTickSpacing(1);
         clawSlider.setSnapToTicks(true);
         clawSlider.setValue(0);
@@ -583,7 +583,7 @@ public class ControlArmWindow extends javax.swing.JFrame
     {//GEN-HEADEREND:event_closeButtonActionPerformed
                 
         // Close position values
-        int clawValue =   0;
+        int clawValue = -120;
         
         // Send the JSON formatted servo move command
         ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_CLAW) + ", \"angle\":" + (clawValue) + "}");
@@ -594,7 +594,7 @@ public class ControlArmWindow extends javax.swing.JFrame
     {//GEN-HEADEREND:event_openButtonActionPerformed
                 
         // Open position values
-        int clawValue =   90;
+        int clawValue = 0;
         
         // Send the JSON formatted servo move command
         ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_CLAW) + ", \"angle\":" + (clawValue) + "}");

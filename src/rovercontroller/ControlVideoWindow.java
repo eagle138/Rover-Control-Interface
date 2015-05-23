@@ -100,6 +100,8 @@ public class ControlVideoWindow extends javax.swing.JFrame
         cameraDropdown = new javax.swing.JComboBox();
         resolutionLabel = new javax.swing.JLabel();
         framerateDropdown = new javax.swing.JComboBox();
+        mastDeployButton = new javax.swing.JButton();
+        mastStowButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Rover Video Control");
@@ -169,6 +171,26 @@ public class ControlVideoWindow extends javax.swing.JFrame
 
         framerateDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30", "24", "20", "15", "10", "7", "5", " " }));
 
+        mastDeployButton.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        mastDeployButton.setText("Deploy Camera Mast");
+        mastDeployButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                mastDeployButtonActionPerformed(evt);
+            }
+        });
+
+        mastStowButton.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        mastStowButton.setText("Stow Camera Mast");
+        mastStowButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                mastStowButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout videoStreamControlPanelLayout = new javax.swing.GroupLayout(videoStreamControlPanel);
         videoStreamControlPanel.setLayout(videoStreamControlPanelLayout);
         videoStreamControlPanelLayout.setHorizontalGroup(
@@ -200,8 +222,10 @@ public class ControlVideoWindow extends javax.swing.JFrame
                                     .addComponent(resolutionDropdown, 0, 98, Short.MAX_VALUE)
                                     .addComponent(bitrateField)))
                             .addComponent(iframeField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(switchCameraButton, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(switchCameraButton, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mastDeployButton, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mastStowButton, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         videoStreamControlPanelLayout.setVerticalGroup(
             videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,6 +260,10 @@ public class ControlVideoWindow extends javax.swing.JFrame
                 .addComponent(stopStreamButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(switchCameraButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mastDeployButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mastStowButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -252,7 +280,7 @@ public class ControlVideoWindow extends javax.swing.JFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(videoStreamControlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(videoStreamControlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -296,6 +324,22 @@ public class ControlVideoWindow extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_switchCameraButtonActionPerformed
 
+    private void mastDeployButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mastDeployButtonActionPerformed
+    {//GEN-HEADEREND:event_mastDeployButtonActionPerformed
+        
+        // Send a command to put the camera mast servo in the deployed position
+        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (10) + ", \"angle\":" + (68.0) + "}");
+        
+    }//GEN-LAST:event_mastDeployButtonActionPerformed
+
+    private void mastStowButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mastStowButtonActionPerformed
+    {//GEN-HEADEREND:event_mastStowButtonActionPerformed
+              
+        // Send a command to put the camera mast servo in the stowed position
+        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (10) + ", \"angle\":" + (-40.0) + "}");
+        
+    }//GEN-LAST:event_mastStowButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bitrateField;
     private javax.swing.JLabel bitrateLabel;
@@ -305,6 +349,8 @@ public class ControlVideoWindow extends javax.swing.JFrame
     private javax.swing.JLabel framerateLabel;
     private javax.swing.JTextField iframeField;
     private javax.swing.JLabel iframeLabel;
+    private javax.swing.JButton mastDeployButton;
+    private javax.swing.JButton mastStowButton;
     private javax.swing.JComboBox protocolDropdown;
     private javax.swing.JLabel protocolLabel;
     private javax.swing.JComboBox resolutionDropdown;
