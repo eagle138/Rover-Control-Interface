@@ -33,12 +33,6 @@ public class ControlMain
     public static ControlSendProcess sendProcess;
     public static ControlReceiveProcess receiveProcess;
     
-    // Gstreamer settings
-    public static String gstreamerPath = "\"C:\\Users\\Stephen\\Google Drive\\Robo-Ops 2015 Programming\\Misc\\gstreamer\\1.0\\x86\\bin\\gst-launch-1.0.exe\"";
-    public static int videoReceivePort = 1338;
-    public static int audioReceivePort = 1339;
-    public static int tcpConnectPort = 5001;
-    
     //--------------------------------------------------------------------------
     // Main Path
     //--------------------------------------------------------------------------
