@@ -25,9 +25,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="videoStreamControlPanel" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="videoStreamControlPanel" max="32767" attributes="0"/>
+                  <Component id="cameraMastControlPanel" max="32767" attributes="0"/>
+              </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -36,7 +39,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="videoStreamControlPanel" min="-2" pref="341" max="-2" attributes="0"/>
+              <Component id="videoStreamControlPanel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="cameraMastControlPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -62,44 +67,40 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="stopStreamButton" alignment="0" max="32767" attributes="0"/>
-                          <Component id="startStreamButton" alignment="0" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="cameraLabel" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="protocolLabel" pref="77" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="protocolDropdown" max="32767" attributes="0"/>
-                                      <Component id="cameraDropdown" pref="98" max="32767" attributes="0"/>
-                                  </Group>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="stopStreamButton" alignment="0" max="32767" attributes="0"/>
+                      <Component id="startStreamButton" alignment="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="cameraLabel" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="protocolLabel" pref="77" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="iframeLabel" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="bitrateLabel" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="framerateLabel" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="resolutionLabel" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="framerateDropdown" max="32767" attributes="0"/>
-                                      <Component id="resolutionDropdown" pref="98" max="32767" attributes="0"/>
-                                      <Component id="bitrateField" max="32767" attributes="0"/>
-                                  </Group>
+                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="protocolDropdown" max="32767" attributes="0"/>
+                                  <Component id="cameraDropdown" pref="98" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="iframeField" alignment="1" min="-2" pref="98" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="iframeLabel" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="bitrateLabel" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="framerateLabel" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="resolutionLabel" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="framerateDropdown" max="32767" attributes="0"/>
+                                  <Component id="resolutionDropdown" pref="98" max="32767" attributes="0"/>
+                                  <Component id="bitrateField" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="iframeField" alignment="1" min="-2" pref="98" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="switchCameraButton" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                      <Component id="mastDeployButton" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                      <Component id="mastStowButton" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                      <Component id="switchCameraButton" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="20" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -142,10 +143,6 @@
                   <Component id="stopStreamButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="switchCameraButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="mastDeployButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="mastStowButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -310,6 +307,51 @@
             </Property>
           </Properties>
         </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="cameraMastControlPanel">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Camera Mast Control">
+              <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                <EtchetBorder/>
+              </Border>
+              <Font PropertyName="font" name="Tahoma" size="12" style="1"/>
+            </TitledBorder>
+          </Border>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="cameraControlJoystick" max="32767" attributes="0"/>
+                      <Component id="mastDeployButton" alignment="1" max="32767" attributes="0"/>
+                      <Component id="mastStowButton" alignment="1" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="cameraControlJoystick" min="-2" pref="176" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="mastStowButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="mastDeployButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
         <Component class="javax.swing.JButton" name="mastDeployButton">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -332,6 +374,13 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mastStowButtonActionPerformed"/>
           </Events>
         </Component>
+        <Container class="rovercontroller.VirtualJoystick" name="cameraControlJoystick">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="cameraControlJoystick.addChangeListener(new javax.swing.event.ChangeListener()&#xa;{&#xa;    public void stateChanged(javax.swing.event.ChangeEvent evt)&#xa;    {&#xa;        cameraControlJoystickStateChanged(evt);&#xa;    }&#xa;});"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+        </Container>
       </SubComponents>
     </Container>
   </SubComponents>
