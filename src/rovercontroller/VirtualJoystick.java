@@ -54,7 +54,7 @@ public class VirtualJoystick extends JPanel implements ChangeListener
     private int joystickKnobSize = 60;
     
     // Load the joystick knob image and scale it
-    private Image joystickKnobImage = ((new ImageIcon(getClass().getResource("/joystickKnob.png"))).getImage()).getScaledInstance(joystickKnobSize, joystickKnobSize, java.awt.Image.SCALE_SMOOTH);
+    private ImageIcon joystickKnobIcon = new ImageIcon(getClass().getResource("/joystickKnob.png"));//.getImage()).getScaledInstance(joystickKnobSize, joystickKnobSize, java.awt.Image.SCALE_SMOOTH);
     
     //--------------------------------------------------------------------------
     // VirtualJoystick Constructor
@@ -199,18 +199,18 @@ public class VirtualJoystick extends JPanel implements ChangeListener
 
         Graphics2D g2 = (Graphics2D) g;
 
-        // Enable antialiasing 
+        // Enable rendering hints to maintain image quality
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-        int diameter;
+        g2.addRenderingHints(new RenderingHints(RenderingHints.KEY_RENDERING,
+                                                RenderingHints.VALUE_RENDER_QUALITY));
 
         // Draw the large circular background
         g2.setColor(Color.LIGHT_GRAY);
-        diameter = joyMaxValue * 2;
-        g2.fillOval(joyCenterX - diameter / 2, joyCenterY - diameter / 2, diameter, diameter);
-        
+        int circleDiameter = joyMaxValue * 2;
+        g2.fillOval(joyCenterX - circleDiameter / 2, joyCenterY - circleDiameter / 2, circleDiameter, circleDiameter);
+
         // Draw the joystick position indicator knob
-        g2.drawImage(joystickKnobImage, joyCenterX + dx - joystickKnobSize / 2, joyCenterY + dy - joystickKnobSize / 2, null);
+        g2.drawImage(joystickKnobIcon.getImage(), joyCenterX + dx - joystickKnobSize / 2, joyCenterY + dy - joystickKnobSize / 2, joystickKnobSize, joystickKnobSize, null);
 
     } // paintComponent
 
