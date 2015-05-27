@@ -25,7 +25,7 @@ public class ControlStreamInterface
     private static Process audioReceiveProcess;
     
     // Path to gstreamer's gst-launch-1.0.exe
-    private static String gstreamerPath = "\"C:\\Users\\Stephen\\Google Drive\\Robo-Ops 2015 Programming\\Misc\\gstreamer\\1.0\\x86\\bin\\gst-launch-1.0.exe\"";
+    static String gstreamerPath = "resources/gstreamer/1.0/x86/bin/gst-launch-1.0.exe";
     
     // Gstreamer port settings
     private static int videoReceivePort = 1338;
@@ -80,7 +80,7 @@ public class ControlStreamInterface
         stopAudioReceive();
         
         // Form the command used to start gstreamer to receive the audio stream
-        String gstreamerCommand = gstreamerPath + "udpsrc port=" + audioReceivePort + " caps=\"application/x-rtp\" ! rtppcmadepay ! alawdec ! autoaudiosink";
+        String gstreamerCommand = gstreamerPath + " udpsrc port=" + audioReceivePort + " caps=\"application/x-rtp\" ! rtppcmadepay ! alawdec ! autoaudiosink";
 
         // Get the current runtime to execute the gstreamer command
         Runtime runtime = Runtime.getRuntime();
@@ -98,6 +98,7 @@ public class ControlStreamInterface
         {
             
             System.out.println("ERROR: Failed to start gstreamer audio receive.");
+            System.out.println(ex);
 
         } // catch
 

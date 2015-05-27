@@ -10,10 +10,6 @@
 //******************************************************************************
 package rovercontroller;
 
-import javax.swing.JOptionPane;
-
-
-
 //******************************************************************************
 //                              CLASS DEFINITION
 //******************************************************************************
@@ -98,16 +94,11 @@ public class ControlUtilityWindow extends javax.swing.JFrame
     private void initComponents()
     {
 
-        roverUtilitiesPanel = new javax.swing.JPanel();
-        rebootButton = new javax.swing.JButton();
-        killButton = new javax.swing.JButton();
-        servoControlPanel = new javax.swing.JPanel();
-        servoControlSlider = new javax.swing.JSlider();
-        servoControlDropdown = new javax.swing.JComboBox();
-        pulseWidthLabel = new javax.swing.JLabel();
         motorControlPanel = new javax.swing.JPanel();
-        motorControlSlider = new javax.swing.JSlider();
         toggleBrakesButton = new javax.swing.JToggleButton();
+        toggleBrakesButton1 = new javax.swing.JToggleButton();
+        virtualDrivingPanel = new javax.swing.JPanel();
+        drivingJoystick = new rovercontroller.VirtualJoystick();
         steeringTrimPanel = new javax.swing.JPanel();
         saveTrimButton = new javax.swing.JButton();
         frontRightWheelSpinner = new javax.swing.JSpinner();
@@ -118,115 +109,15 @@ public class ControlUtilityWindow extends javax.swing.JFrame
         frontLeftWheelSpinner = new javax.swing.JSpinner();
         backRightWheelSpinner = new javax.swing.JSpinner();
         backLeftWheelSpinner = new javax.swing.JSpinner();
+        servoControlPanel2 = new javax.swing.JPanel();
+        servoControlSlider2 = new javax.swing.JSlider();
+        servoControlDropdown2 = new javax.swing.JComboBox();
+        pulseWidthLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
-        roverUtilitiesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Rover Utilities", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
-
-        rebootButton.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        rebootButton.setText("Reboot Rover");
-        rebootButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                rebootButtonActionPerformed(evt);
-            }
-        });
-
-        killButton.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        killButton.setText("Kill Rover Control Code");
-        killButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                killButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout roverUtilitiesPanelLayout = new javax.swing.GroupLayout(roverUtilitiesPanel);
-        roverUtilitiesPanel.setLayout(roverUtilitiesPanelLayout);
-        roverUtilitiesPanelLayout.setHorizontalGroup(
-            roverUtilitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(roverUtilitiesPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(roverUtilitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rebootButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(killButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        roverUtilitiesPanelLayout.setVerticalGroup(
-            roverUtilitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roverUtilitiesPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(rebootButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(killButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        servoControlPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Servo Control", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
-
-        servoControlSlider.setMajorTickSpacing(5);
-        servoControlSlider.setMaximum(90);
-        servoControlSlider.setMinimum(-90);
-        servoControlSlider.setMinorTickSpacing(1);
-        servoControlSlider.setSnapToTicks(true);
-        servoControlSlider.setToolTipText("");
-        servoControlSlider.setValue(0);
-        servoControlSlider.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
-                servoControlSliderStateChanged(evt);
-            }
-        });
-
-        servoControlDropdown.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        servoControlDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Servo 0", "Servo 1", "Servo 2", "Servo 3", "Servo 4", "Servo 5", "Servo 6", "Servo 7", "Servo 8", "Servo 9", "Servo 10", "Servo 11", "Servo 12", "Servo 13", "Servo 14", "Servo 15" }));
-
-        pulseWidthLabel.setText("0.0");
-
-        javax.swing.GroupLayout servoControlPanelLayout = new javax.swing.GroupLayout(servoControlPanel);
-        servoControlPanel.setLayout(servoControlPanelLayout);
-        servoControlPanelLayout.setHorizontalGroup(
-            servoControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(servoControlPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(servoControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(servoControlDropdown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(servoControlPanelLayout.createSequentialGroup()
-                        .addComponent(servoControlSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pulseWidthLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        servoControlPanelLayout.setVerticalGroup(
-            servoControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(servoControlPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(servoControlDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(servoControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(servoControlSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pulseWidthLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        motorControlPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Motor Speed", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
-
-        motorControlSlider.setMajorTickSpacing(1000);
-        motorControlSlider.setMaximum(1000);
-        motorControlSlider.setMinimum(-1000);
-        motorControlSlider.setMinorTickSpacing(1);
-        motorControlSlider.setSnapToTicks(true);
-        motorControlSlider.setValue(0);
-        motorControlSlider.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
-                motorControlSliderStateChanged(evt);
-            }
-        });
+        motorControlPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Motor Control", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         toggleBrakesButton.setText("Toggle Brakes");
         toggleBrakesButton.addActionListener(new java.awt.event.ActionListener()
@@ -237,6 +128,8 @@ public class ControlUtilityWindow extends javax.swing.JFrame
             }
         });
 
+        toggleBrakesButton1.setText("Toggle Brakes");
+
         javax.swing.GroupLayout motorControlPanelLayout = new javax.swing.GroupLayout(motorControlPanel);
         motorControlPanel.setLayout(motorControlPanelLayout);
         motorControlPanelLayout.setHorizontalGroup(
@@ -244,213 +137,253 @@ public class ControlUtilityWindow extends javax.swing.JFrame
             .addGroup(motorControlPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(motorControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(toggleBrakesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(motorControlSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(toggleBrakesButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(toggleBrakesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         motorControlPanelLayout.setVerticalGroup(
             motorControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(motorControlPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(motorControlSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(toggleBrakesButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(toggleBrakesButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        steeringTrimPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Steering Trim", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        virtualDrivingPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Virtual Driving", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
-        saveTrimButton.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        saveTrimButton.setText("Save Trim");
-        saveTrimButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
+        drivingJoystick.addChangeListener(new javax.swing.event.ChangeListener()
             {
-                saveTrimButtonActionPerformed(evt);
-            }
-        });
+                public void stateChanged(javax.swing.event.ChangeEvent evt)
+                {
+                    drivingJoystickStateChanged(evt);
+                }
+            });
 
-        frontRightWheelSpinner.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            drivingJoystick.setReturnToCenter(true);
+            drivingJoystick.setJoystickKnobSize(120);
+
+            javax.swing.GroupLayout virtualDrivingPanelLayout = new javax.swing.GroupLayout(virtualDrivingPanel);
+            virtualDrivingPanel.setLayout(virtualDrivingPanelLayout);
+            virtualDrivingPanelLayout.setHorizontalGroup(
+                virtualDrivingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(virtualDrivingPanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(drivingJoystick, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                    .addContainerGap())
+            );
+            virtualDrivingPanelLayout.setVerticalGroup(
+                virtualDrivingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(virtualDrivingPanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(drivingJoystick, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap())
+            );
+
+            steeringTrimPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Steering Trim", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+
+            saveTrimButton.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+            saveTrimButton.setText("Save Trim");
+            saveTrimButton.addActionListener(new java.awt.event.ActionListener()
             {
-                frontRightWheelSpinnerStateChanged(evt);
-            }
-        });
+                public void actionPerformed(java.awt.event.ActionEvent evt)
+                {
+                    saveTrimButtonActionPerformed(evt);
+                }
+            });
 
-        frontRightWheelLabel.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        frontRightWheelLabel.setText("Front Right Wheel:");
-
-        frontLeftWheelLabel.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        frontLeftWheelLabel.setText("Front Left Wheel:");
-
-        backRightWheelLabel.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        backRightWheelLabel.setText("Back Right Wheel:");
-
-        backLeftWheelLabel.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        backLeftWheelLabel.setText("Back Left Wheel:");
-
-        frontLeftWheelSpinner.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            frontRightWheelSpinner.addChangeListener(new javax.swing.event.ChangeListener()
             {
-                frontLeftWheelSpinnerStateChanged(evt);
-            }
-        });
+                public void stateChanged(javax.swing.event.ChangeEvent evt)
+                {
+                    frontRightWheelSpinnerStateChanged(evt);
+                }
+            });
 
-        backRightWheelSpinner.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            frontRightWheelLabel.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+            frontRightWheelLabel.setText("Front Right Wheel:");
+
+            frontLeftWheelLabel.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+            frontLeftWheelLabel.setText("Front Left Wheel:");
+
+            backRightWheelLabel.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+            backRightWheelLabel.setText("Back Right Wheel:");
+
+            backLeftWheelLabel.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+            backLeftWheelLabel.setText("Back Left Wheel:");
+
+            frontLeftWheelSpinner.addChangeListener(new javax.swing.event.ChangeListener()
             {
-                backRightWheelSpinnerStateChanged(evt);
-            }
-        });
+                public void stateChanged(javax.swing.event.ChangeEvent evt)
+                {
+                    frontLeftWheelSpinnerStateChanged(evt);
+                }
+            });
 
-        backLeftWheelSpinner.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            backRightWheelSpinner.addChangeListener(new javax.swing.event.ChangeListener()
             {
-                backLeftWheelSpinnerStateChanged(evt);
-            }
-        });
+                public void stateChanged(javax.swing.event.ChangeEvent evt)
+                {
+                    backRightWheelSpinnerStateChanged(evt);
+                }
+            });
 
-        javax.swing.GroupLayout steeringTrimPanelLayout = new javax.swing.GroupLayout(steeringTrimPanel);
-        steeringTrimPanel.setLayout(steeringTrimPanelLayout);
-        steeringTrimPanelLayout.setHorizontalGroup(
-            steeringTrimPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(steeringTrimPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(steeringTrimPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(saveTrimButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(steeringTrimPanelLayout.createSequentialGroup()
-                        .addComponent(frontRightWheelLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(frontRightWheelSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(steeringTrimPanelLayout.createSequentialGroup()
-                        .addComponent(frontLeftWheelLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(frontLeftWheelSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(steeringTrimPanelLayout.createSequentialGroup()
-                        .addComponent(backRightWheelLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(backRightWheelSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(steeringTrimPanelLayout.createSequentialGroup()
-                        .addComponent(backLeftWheelLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(backLeftWheelSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        steeringTrimPanelLayout.setVerticalGroup(
-            steeringTrimPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(steeringTrimPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(steeringTrimPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(frontRightWheelSpinner)
-                    .addComponent(frontRightWheelLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(steeringTrimPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(frontLeftWheelSpinner)
-                    .addComponent(frontLeftWheelLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(steeringTrimPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(backRightWheelLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-                    .addComponent(backRightWheelSpinner))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(steeringTrimPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(backLeftWheelSpinner)
-                    .addComponent(backLeftWheelLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(saveTrimButton)
-                .addContainerGap())
-        );
+            backLeftWheelSpinner.addChangeListener(new javax.swing.event.ChangeListener()
+            {
+                public void stateChanged(javax.swing.event.ChangeEvent evt)
+                {
+                    backLeftWheelSpinnerStateChanged(evt);
+                }
+            });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(motorControlPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(roverUtilitiesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(servoControlPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(steeringTrimPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(roverUtilitiesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(servoControlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(motorControlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(steeringTrimPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+            javax.swing.GroupLayout steeringTrimPanelLayout = new javax.swing.GroupLayout(steeringTrimPanel);
+            steeringTrimPanel.setLayout(steeringTrimPanelLayout);
+            steeringTrimPanelLayout.setHorizontalGroup(
+                steeringTrimPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(steeringTrimPanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(steeringTrimPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(saveTrimButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(steeringTrimPanelLayout.createSequentialGroup()
+                            .addGroup(steeringTrimPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(backLeftWheelLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(backRightWheelLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(frontRightWheelLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(frontLeftWheelLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(steeringTrimPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(backLeftWheelSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(backRightWheelSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(frontLeftWheelSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(frontRightWheelSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGap(0, 0, Short.MAX_VALUE))
+            );
+            steeringTrimPanelLayout.setVerticalGroup(
+                steeringTrimPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(steeringTrimPanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(steeringTrimPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(frontRightWheelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(frontRightWheelSpinner))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(steeringTrimPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(frontLeftWheelLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                        .addComponent(frontLeftWheelSpinner))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(steeringTrimPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(backRightWheelLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                        .addComponent(backRightWheelSpinner))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(steeringTrimPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(backLeftWheelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(backLeftWheelSpinner))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(saveTrimButton)
+                    .addContainerGap())
+            );
 
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+            servoControlPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Servo Control", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
-    private void rebootButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_rebootButtonActionPerformed
-    {//GEN-HEADEREND:event_rebootButtonActionPerformed
+            servoControlSlider2.setMajorTickSpacing(5);
+            servoControlSlider2.setMaximum(90);
+            servoControlSlider2.setMinimum(-90);
+            servoControlSlider2.setMinorTickSpacing(1);
+            servoControlSlider2.setSnapToTicks(true);
+            servoControlSlider2.setToolTipText("");
+            servoControlSlider2.setValue(0);
+            servoControlSlider2.addChangeListener(new javax.swing.event.ChangeListener()
+            {
+                public void stateChanged(javax.swing.event.ChangeEvent evt)
+                {
+                    servoControlSlider2StateChanged(evt);
+                }
+            });
 
-        // Show a reboot confirmation dialog
-        int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to reboot the rover?", "Alert", JOptionPane.YES_NO_OPTION);
-        
-        // If the user pressed yes
-        if (reply == JOptionPane.YES_OPTION)
-        {
-            
-            // Send the JSON formatted reboot command
-            ControlCommunicator.sendCommand("{\"command\":\"reboot\"}");
-            
-        } // if
+            servoControlDropdown2.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+            servoControlDropdown2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Servo 0", "Servo 1", "Servo 2", "Servo 3", "Servo 4", "Servo 5", "Servo 6", "Servo 7", "Servo 8", "Servo 9", "Servo 10", "Servo 11", "Servo 12", "Servo 13", "Servo 14", "Servo 15" }));
 
-    }//GEN-LAST:event_rebootButtonActionPerformed
+            pulseWidthLabel2.setText("0.0");
 
-    private void killButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_killButtonActionPerformed
-    {//GEN-HEADEREND:event_killButtonActionPerformed
+            javax.swing.GroupLayout servoControlPanel2Layout = new javax.swing.GroupLayout(servoControlPanel2);
+            servoControlPanel2.setLayout(servoControlPanel2Layout);
+            servoControlPanel2Layout.setHorizontalGroup(
+                servoControlPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(servoControlPanel2Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(servoControlPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(servoControlDropdown2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(servoControlPanel2Layout.createSequentialGroup()
+                            .addComponent(servoControlSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(pulseWidthLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)))
+                    .addContainerGap())
+            );
+            servoControlPanel2Layout.setVerticalGroup(
+                servoControlPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(servoControlPanel2Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(servoControlDropdown2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(servoControlPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(servoControlSlider2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pulseWidthLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            );
 
-        // Show a reboot confirmation dialog
-        int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to kill the rover control code?", "Alert", JOptionPane.YES_NO_OPTION);
-        
-        // If the user pressed yes
-        if (reply == JOptionPane.YES_OPTION)
-        {
-            
-            // Send the JSON formatted reboot command
-            ControlCommunicator.sendCommand("{\"command\":\"kill\"}");
-            
-        } // if
+            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+            getContentPane().setLayout(layout);
+            layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(steeringTrimPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(servoControlPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(motorControlPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(virtualDrivingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            );
+            layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(virtualDrivingPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(motorControlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(servoControlPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(steeringTrimPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            );
 
-    }//GEN-LAST:event_killButtonActionPerformed
+            pack();
+        }// </editor-fold>//GEN-END:initComponents
 
-    private void servoControlSliderStateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_servoControlSliderStateChanged
-    {//GEN-HEADEREND:event_servoControlSliderStateChanged
+    private void drivingJoystickStateChanged(javax.swing.event.ChangeEvent evt)                                                
+{                                       
 
-        // Get the servo number and angle from the dropdown menu and slider
-        int selectedServo = servoControlDropdown.getSelectedIndex();
-        double servoState = ((double)servoControlSlider.getValue());
-        pulseWidthLabel.setText(Double.toString(servoState));
-        
-        // Send the JSON formatted servo command
-        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (selectedServo) + ", \"angle\":" + (servoState) + "}");
-    }//GEN-LAST:event_servoControlSliderStateChanged
+    // Motor speed and driving angle maximum value
+    double maxMotorSpeed = 0.2;
+    int maxSteeringAngle = 30;
 
-    private void motorControlSliderStateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_motorControlSliderStateChanged
-    {//GEN-HEADEREND:event_motorControlSliderStateChanged
+    // Get the joystick axes values
+    double xAxisValue = drivingJoystick.joyXAxis;
+    double yAxisValue = drivingJoystick.joyYAxis;
 
-        // Get the motor speed from the slider
-        int motorState = motorControlSlider.getValue();
+    // Convert the axis values into steering angle and motor speed
+    double motorSpeed = xAxisValue * maxMotorSpeed;
+    int steeringAngle = (int)(yAxisValue * maxSteeringAngle);
 
-        // Send the JSON formatted motor speed command
-        ControlCommunicator.sendCommand("{\"command\":\"motorspeed\", \"speed\":" + ((double) motorState / 1000) + "}");
+    // Send the JSON formatted commands
+    //ControlCommunicator.sendCommand("{\"command\":\"steer\", \"angle\":" + steeringAngle + "}");
+    //ControlCommunicator.sendCommand("{\"command\":\"motorspeed\", \"speed\":" + motorSpeed + "}");
 
-    }//GEN-LAST:event_motorControlSliderStateChanged
-
+}  
+    
     private void toggleBrakesButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_toggleBrakesButtonActionPerformed
     {//GEN-HEADEREND:event_toggleBrakesButtonActionPerformed
 
@@ -520,26 +453,30 @@ public class ControlUtilityWindow extends javax.swing.JFrame
         
     }//GEN-LAST:event_backLeftWheelSpinnerStateChanged
 
+    private void servoControlSlider2StateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_servoControlSlider2StateChanged
+    {//GEN-HEADEREND:event_servoControlSlider2StateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_servoControlSlider2StateChanged
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backLeftWheelLabel;
     private javax.swing.JSpinner backLeftWheelSpinner;
     private javax.swing.JLabel backRightWheelLabel;
     private javax.swing.JSpinner backRightWheelSpinner;
+    private rovercontroller.VirtualJoystick drivingJoystick;
     private javax.swing.JLabel frontLeftWheelLabel;
     private javax.swing.JSpinner frontLeftWheelSpinner;
     private javax.swing.JLabel frontRightWheelLabel;
     private javax.swing.JSpinner frontRightWheelSpinner;
-    private javax.swing.JButton killButton;
     private javax.swing.JPanel motorControlPanel;
-    private javax.swing.JSlider motorControlSlider;
-    private javax.swing.JLabel pulseWidthLabel;
-    private javax.swing.JButton rebootButton;
-    private javax.swing.JPanel roverUtilitiesPanel;
+    private javax.swing.JLabel pulseWidthLabel2;
     private javax.swing.JButton saveTrimButton;
-    private javax.swing.JComboBox servoControlDropdown;
-    private javax.swing.JPanel servoControlPanel;
-    private javax.swing.JSlider servoControlSlider;
+    private javax.swing.JComboBox servoControlDropdown2;
+    private javax.swing.JPanel servoControlPanel2;
+    private javax.swing.JSlider servoControlSlider2;
     private javax.swing.JPanel steeringTrimPanel;
     private javax.swing.JToggleButton toggleBrakesButton;
+    private javax.swing.JToggleButton toggleBrakesButton1;
+    private javax.swing.JPanel virtualDrivingPanel;
     // End of variables declaration//GEN-END:variables
 }

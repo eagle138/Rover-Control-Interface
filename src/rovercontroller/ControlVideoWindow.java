@@ -179,32 +179,34 @@ public class ControlVideoWindow extends javax.swing.JFrame
             videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(videoStreamControlPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(stopStreamButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(startStreamButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(videoStreamControlPanelLayout.createSequentialGroup()
-                            .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(cameraLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(protocolLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
-                            .addGap(4, 4, 4)
-                            .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(protocolDropdown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cameraDropdown, 0, 98, Short.MAX_VALUE)))
-                        .addGroup(videoStreamControlPanelLayout.createSequentialGroup()
-                            .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(iframeLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bitrateLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(framerateLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(resolutionLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(framerateDropdown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(resolutionDropdown, 0, 98, Short.MAX_VALUE)
-                                .addComponent(bitrateField)))
-                        .addComponent(iframeField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(switchCameraButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(videoStreamControlPanelLayout.createSequentialGroup()
+                        .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(stopStreamButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(startStreamButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(videoStreamControlPanelLayout.createSequentialGroup()
+                                .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(iframeLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bitrateLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(framerateLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(resolutionLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(framerateDropdown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bitrateField)
+                                    .addComponent(resolutionDropdown, 0, 119, Short.MAX_VALUE)
+                                    .addComponent(iframeField)))
+                            .addComponent(switchCameraButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(videoStreamControlPanelLayout.createSequentialGroup()
+                        .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(cameraLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(protocolLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
+                        .addGap(4, 4, 4)
+                        .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cameraDropdown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(protocolDropdown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         videoStreamControlPanelLayout.setVerticalGroup(
             videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,6 +274,8 @@ public class ControlVideoWindow extends javax.swing.JFrame
                 }
             });
 
+            cameraControlJoystick.setReturnToCenter(false);
+
             javax.swing.GroupLayout cameraMastControlPanelLayout = new javax.swing.GroupLayout(cameraMastControlPanel);
             cameraMastControlPanel.setLayout(cameraMastControlPanelLayout);
             cameraMastControlPanelLayout.setHorizontalGroup(
@@ -302,10 +306,10 @@ public class ControlVideoWindow extends javax.swing.JFrame
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(videoStreamControlPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cameraMastControlPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap())
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -321,25 +325,25 @@ public class ControlVideoWindow extends javax.swing.JFrame
         }// </editor-fold>//GEN-END:initComponents
 
 private void cameraControlJoystickStateChanged(javax.swing.event.ChangeEvent evt)                                                
-    {                                       
-        
-        // Camera azimuth and elevation maximum angles
-        int cameraMaxAz = 90;
-        int cameraMaxEle = 90;
+{                                       
 
-        // Get the joystick axes values
-        double xAxisValue = cameraControlJoystick.joyXAxis;
-        double yAxisValue = cameraControlJoystick.joyYAxis;
-        
-        // Convert the axis values into servo angles
-        int cameraAzAngle = (int)(xAxisValue * cameraMaxAz);
-        int cameraEleAngle = (int)(yAxisValue * cameraMaxEle);
-        
-        // Send the JSON formatted servo command to turn the camera mast servos
-        //ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (11) + ", \"angle\":" + (cameraAzAngle) + "}");
-        //ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (12) + ", \"angle\":" + (cameraEleAngle) + "}");
-        
-    }      
+    // Camera azimuth and elevation maximum angles
+    int cameraMaxAz = 90;
+    int cameraMaxEle = 90;
+
+    // Get the joystick axes values
+    double xAxisValue = cameraControlJoystick.joyXAxis;
+    double yAxisValue = cameraControlJoystick.joyYAxis;
+
+    // Convert the axis values into servo angles
+    int cameraAzAngle = (int)(xAxisValue * cameraMaxAz);
+    int cameraEleAngle = (int)(yAxisValue * cameraMaxEle);
+
+    // Send the JSON formatted servo command to turn the camera mast servos
+    //ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (11) + ", \"angle\":" + (cameraAzAngle) + "}");
+    //ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (12) + ", \"angle\":" + (cameraEleAngle) + "}");
+
+}      
     
     private void startStreamButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_startStreamButtonActionPerformed
     {//GEN-HEADEREND:event_startStreamButtonActionPerformed

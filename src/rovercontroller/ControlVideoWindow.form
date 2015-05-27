@@ -27,11 +27,11 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="videoStreamControlPanel" max="32767" attributes="0"/>
                   <Component id="cameraMastControlPanel" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -67,40 +67,43 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="stopStreamButton" alignment="0" max="32767" attributes="0"/>
-                      <Component id="startStreamButton" alignment="0" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="cameraLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="protocolLabel" pref="77" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="stopStreamButton" alignment="0" max="32767" attributes="0"/>
+                              <Component id="startStreamButton" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="iframeLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="bitrateLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="framerateLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="resolutionLabel" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="framerateDropdown" max="32767" attributes="0"/>
+                                      <Component id="bitrateField" max="32767" attributes="0"/>
+                                      <Component id="resolutionDropdown" alignment="0" pref="119" max="32767" attributes="0"/>
+                                      <Component id="iframeField" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="protocolDropdown" max="32767" attributes="0"/>
-                                  <Component id="cameraDropdown" pref="98" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="switchCameraButton" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="iframeLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="bitrateLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="framerateLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="resolutionLabel" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="framerateDropdown" max="32767" attributes="0"/>
-                                  <Component id="resolutionDropdown" pref="98" max="32767" attributes="0"/>
-                                  <Component id="bitrateField" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="iframeField" alignment="1" min="-2" pref="98" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="switchCameraButton" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="cameraLabel" alignment="0" max="32767" attributes="0"/>
+                              <Component id="protocolLabel" pref="77" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cameraDropdown" max="32767" attributes="0"/>
+                              <Component id="protocolDropdown" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -376,7 +379,7 @@
         </Component>
         <Container class="rovercontroller.VirtualJoystick" name="cameraControlJoystick">
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="cameraControlJoystick.addChangeListener(new javax.swing.event.ChangeListener()&#xa;{&#xa;    public void stateChanged(javax.swing.event.ChangeEvent evt)&#xa;    {&#xa;        cameraControlJoystickStateChanged(evt);&#xa;    }&#xa;});"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="cameraControlJoystick.addChangeListener(new javax.swing.event.ChangeListener()&#xa;{&#xa;    public void stateChanged(javax.swing.event.ChangeEvent evt)&#xa;    {&#xa;        cameraControlJoystickStateChanged(evt);&#xa;    }&#xa;});&#xa;&#xa;cameraControlJoystick.setReturnToCenter(false);"/>
           </AuxValues>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
