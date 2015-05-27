@@ -13,9 +13,11 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeEvent;
@@ -36,7 +38,7 @@ public class VirtualJoystick extends JPanel implements ChangeListener
     public double joyYAxis = 0;
 
     // If true, the joystick will return to the center position when released
-    public boolean returnToCenter = false;
+    private boolean returnToCenter = true;
     
     // Maximum x and y value of the joystick joyPosition in pixels
     private int joyMaxValue;
@@ -47,10 +49,13 @@ public class VirtualJoystick extends JPanel implements ChangeListener
     // Joystick x and y distance from center in pixels
     private int dx = 0;
     private int dy = 0;
+ 
+    // Joystick Knob size in pixels
+    private int joystickKnobSize = 60;
     
-
+    // Load the joystick knob image and scale it
+    private Image joystickKnobImage = ((new ImageIcon(getClass().getResource("/joystickKnob.png"))).getImage()).getScaledInstance(joystickKnobSize, joystickKnobSize, java.awt.Image.SCALE_SMOOTH);
     
-
     //--------------------------------------------------------------------------
     // VirtualJoystick Constructor
     //--------------------------------------------------------------------------
@@ -180,7 +185,7 @@ public class VirtualJoystick extends JPanel implements ChangeListener
         // and subtract the radius of the indicator to ensure that it fits fully
         // within the panel
         joyMaxValue = Math.min(joyWidth, joyHeight) / 2;
-        joyMaxValue = joyMaxValue - 20;
+        joyMaxValue = joyMaxValue - joystickKnobSize / 2;
 
         // If the panel size is 0, don't bother drawing it
         if (joyMaxValue == 0)
@@ -203,14 +208,26 @@ public class VirtualJoystick extends JPanel implements ChangeListener
         g2.setColor(Color.LIGHT_GRAY);
         diameter = joyMaxValue * 2;
         g2.fillOval(joyCenterX - diameter / 2, joyCenterY - diameter / 2, diameter, diameter);
-
-        // Draw the joystick position indicator
-        g2.setColor(Color.RED);
-        diameter = 40;
-        g2.fillOval(joyCenterX + dx - diameter / 2, joyCenterY + dy - diameter / 2, diameter, diameter);
+        
+        // Draw the joystick position indicator knob
+        g2.drawImage(joystickKnobImage, joyCenterX + dx - joystickKnobSize / 2, joyCenterY + dy - joystickKnobSize / 2, null);
 
     } // paintComponent
 
+    public void setReturnToCenter(boolean returnToCenter)
+    {
+        
+        this.returnToCenter = returnToCenter;
+        
+    } // setReturnToCenter
+    
+    public void setJoystickKnobSize(int size)
+    {
+        
+        this.joystickKnobSize = size;
+        
+    } // setJoystickKnobSize
+    
     void addChangeListener(ChangeListener listener)
     {
         
@@ -224,11 +241,6 @@ public class VirtualJoystick extends JPanel implements ChangeListener
         listenerList.remove(ChangeListener.class, listener);
         
     } // removeChangeListener
-
-    public ChangeListener[] getChangeListeners() 
-    {
-        return listenerList.getListeners(ChangeListener.class);
-    }
     
     protected void fireStateChanged()
     {
