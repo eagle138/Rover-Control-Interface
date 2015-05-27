@@ -10,3 +10,6 @@ nb-configuration.xml
 # Class Files #
 *.class
 
+# gstreamer #
+resources/gstreamer/
+
