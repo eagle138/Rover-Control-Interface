@@ -337,11 +337,11 @@ private void cameraControlJoystickStateChanged(javax.swing.event.ChangeEvent evt
 
     // Convert the axis values into servo angles
     int cameraAzAngle = (int)(xAxisValue * cameraMaxAz);
-    int cameraEleAngle = (int)(yAxisValue * cameraMaxEle);
+    int cameraEleAngle = (int)(yAxisValue * cameraMaxEle * -1.0);
 
     // Send the JSON formatted servo command to turn the camera mast servos
-    //ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (11) + ", \"angle\":" + (cameraAzAngle) + "}");
-    //ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (12) + ", \"angle\":" + (cameraEleAngle) + "}");
+    ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (11) + ", \"angle\":" + (cameraAzAngle) + "}");
+    ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (12) + ", \"angle\":" + (cameraEleAngle) + "}");
 
 }      
     
@@ -394,7 +394,7 @@ private void cameraControlJoystickStateChanged(javax.swing.event.ChangeEvent evt
     {//GEN-HEADEREND:event_mastStowButtonActionPerformed
               
         // Send a command to put the camera mast servo in the stowed position
-        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (10) + ", \"angle\":" + (-40.0) + "}");
+        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (10) + ", \"angle\":" + (-35.0) + "}");
         
     }//GEN-LAST:event_mastStowButtonActionPerformed
 

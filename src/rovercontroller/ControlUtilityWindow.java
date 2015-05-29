@@ -110,9 +110,9 @@ public class ControlUtilityWindow extends javax.swing.JFrame
         backRightWheelSpinner = new javax.swing.JSpinner();
         backLeftWheelSpinner = new javax.swing.JSpinner();
         servoControlPanel2 = new javax.swing.JPanel();
-        servoControlSlider2 = new javax.swing.JSlider();
-        servoControlDropdown2 = new javax.swing.JComboBox();
-        pulseWidthLabel2 = new javax.swing.JLabel();
+        servoControlSlider = new javax.swing.JSlider();
+        servoControlDropdown = new javax.swing.JComboBox();
+        servoControlLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -285,25 +285,25 @@ public class ControlUtilityWindow extends javax.swing.JFrame
 
             servoControlPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Servo Control", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
-            servoControlSlider2.setMajorTickSpacing(5);
-            servoControlSlider2.setMaximum(90);
-            servoControlSlider2.setMinimum(-90);
-            servoControlSlider2.setMinorTickSpacing(1);
-            servoControlSlider2.setSnapToTicks(true);
-            servoControlSlider2.setToolTipText("");
-            servoControlSlider2.setValue(0);
-            servoControlSlider2.addChangeListener(new javax.swing.event.ChangeListener()
+            servoControlSlider.setMajorTickSpacing(5);
+            servoControlSlider.setMaximum(90);
+            servoControlSlider.setMinimum(-90);
+            servoControlSlider.setMinorTickSpacing(1);
+            servoControlSlider.setSnapToTicks(true);
+            servoControlSlider.setToolTipText("");
+            servoControlSlider.setValue(0);
+            servoControlSlider.addChangeListener(new javax.swing.event.ChangeListener()
             {
                 public void stateChanged(javax.swing.event.ChangeEvent evt)
                 {
-                    servoControlSlider2StateChanged(evt);
+                    servoControlSliderStateChanged(evt);
                 }
             });
 
-            servoControlDropdown2.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-            servoControlDropdown2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Servo 0", "Servo 1", "Servo 2", "Servo 3", "Servo 4", "Servo 5", "Servo 6", "Servo 7", "Servo 8", "Servo 9", "Servo 10", "Servo 11", "Servo 12", "Servo 13", "Servo 14", "Servo 15" }));
+            servoControlDropdown.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+            servoControlDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Servo 0", "Servo 1", "Servo 2", "Servo 3", "Servo 4", "Servo 5", "Servo 6", "Servo 7", "Servo 8", "Servo 9", "Servo 10", "Servo 11", "Servo 12", "Servo 13", "Servo 14", "Servo 15" }));
 
-            pulseWidthLabel2.setText("0.0");
+            servoControlLabel.setText("0.0");
 
             javax.swing.GroupLayout servoControlPanel2Layout = new javax.swing.GroupLayout(servoControlPanel2);
             servoControlPanel2.setLayout(servoControlPanel2Layout);
@@ -312,22 +312,22 @@ public class ControlUtilityWindow extends javax.swing.JFrame
                 .addGroup(servoControlPanel2Layout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(servoControlPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(servoControlDropdown2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(servoControlDropdown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(servoControlPanel2Layout.createSequentialGroup()
-                            .addComponent(servoControlSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(servoControlSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(pulseWidthLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)))
+                            .addComponent(servoControlLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)))
                     .addContainerGap())
             );
             servoControlPanel2Layout.setVerticalGroup(
                 servoControlPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(servoControlPanel2Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(servoControlDropdown2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(servoControlDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(servoControlPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(servoControlSlider2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pulseWidthLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(servoControlSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(servoControlLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
 
@@ -367,7 +367,7 @@ public class ControlUtilityWindow extends javax.swing.JFrame
 {                                       
 
     // Motor speed and driving angle maximum value
-    double maxMotorSpeed = 0.2;
+    double maxMotorSpeed = 1.0;
     int maxSteeringAngle = 30;
 
     // Get the joystick axes values
@@ -375,12 +375,12 @@ public class ControlUtilityWindow extends javax.swing.JFrame
     double yAxisValue = drivingJoystick.joyYAxis;
 
     // Convert the axis values into steering angle and motor speed
-    double motorSpeed = xAxisValue * maxMotorSpeed;
-    int steeringAngle = (int)(yAxisValue * maxSteeringAngle);
+    double motorSpeed = yAxisValue * maxMotorSpeed * -1.0;
+    int steeringAngle = (int)(xAxisValue * maxSteeringAngle);
 
     // Send the JSON formatted commands
-    //ControlCommunicator.sendCommand("{\"command\":\"steer\", \"angle\":" + steeringAngle + "}");
-    //ControlCommunicator.sendCommand("{\"command\":\"motorspeed\", \"speed\":" + motorSpeed + "}");
+    ControlCommunicator.sendCommand("{\"command\":\"steer\", \"angle\":" + steeringAngle + "}");
+    ControlCommunicator.sendCommand("{\"command\":\"motorspeed\", \"speed\":" + motorSpeed + "}");
 
 }  
     
@@ -453,10 +453,22 @@ public class ControlUtilityWindow extends javax.swing.JFrame
         
     }//GEN-LAST:event_backLeftWheelSpinnerStateChanged
 
-    private void servoControlSlider2StateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_servoControlSlider2StateChanged
-    {//GEN-HEADEREND:event_servoControlSlider2StateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_servoControlSlider2StateChanged
+    private void servoControlSliderStateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_servoControlSliderStateChanged
+    {//GEN-HEADEREND:event_servoControlSliderStateChanged
+                
+        // Get the value of the angle spinner
+        int servoAngle = (int) servoControlSlider.getValue();
+        
+        // Get the selected servo number form the dropdown
+        int selectedServo = servoControlDropdown.getSelectedIndex();
+
+        // Change the label to display the angle value
+        servoControlLabel.setText("" + servoAngle);
+        
+        // Send the JSON formatted servo move command
+        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (selectedServo) + ", \"angle\":" + (servoAngle) + "}");
+        
+    }//GEN-LAST:event_servoControlSliderStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backLeftWheelLabel;
@@ -469,11 +481,11 @@ public class ControlUtilityWindow extends javax.swing.JFrame
     private javax.swing.JLabel frontRightWheelLabel;
     private javax.swing.JSpinner frontRightWheelSpinner;
     private javax.swing.JPanel motorControlPanel;
-    private javax.swing.JLabel pulseWidthLabel2;
     private javax.swing.JButton saveTrimButton;
-    private javax.swing.JComboBox servoControlDropdown2;
+    private javax.swing.JComboBox servoControlDropdown;
+    private javax.swing.JLabel servoControlLabel;
     private javax.swing.JPanel servoControlPanel2;
-    private javax.swing.JSlider servoControlSlider2;
+    private javax.swing.JSlider servoControlSlider;
     private javax.swing.JPanel steeringTrimPanel;
     private javax.swing.JToggleButton toggleBrakesButton;
     private javax.swing.JToggleButton toggleBrakesButton1;

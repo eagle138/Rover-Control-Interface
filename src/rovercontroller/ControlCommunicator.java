@@ -38,7 +38,7 @@ public class ControlCommunicator
     //--------------------------------------------------------------------------
     
     // IP address of the rover as set up on the LogMeIn Hamachi network
-    public static String roverIpAddress = "25.1.156.230";
+    public static String roverIpAddress = "25.129.69.92";
 
     // Port that the rover is listening for commands on
     public static int roverListenPort = 5000;

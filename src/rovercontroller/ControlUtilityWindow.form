@@ -313,11 +313,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="servoControlDropdown2" alignment="1" max="32767" attributes="0"/>
+                      <Component id="servoControlDropdown" alignment="1" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="servoControlSlider2" min="-2" pref="160" max="-2" attributes="0"/>
+                          <Component id="servoControlSlider" min="-2" pref="160" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="pulseWidthLabel2" pref="23" max="32767" attributes="0"/>
+                          <Component id="servoControlLabel" pref="23" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -328,11 +328,11 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="servoControlDropdown2" min="-2" max="-2" attributes="0"/>
+                  <Component id="servoControlDropdown" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="servoControlSlider2" alignment="0" max="32767" attributes="0"/>
-                      <Component id="pulseWidthLabel2" alignment="0" max="32767" attributes="0"/>
+                      <Component id="servoControlSlider" alignment="0" max="32767" attributes="0"/>
+                      <Component id="servoControlLabel" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -340,7 +340,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JSlider" name="servoControlSlider2">
+        <Component class="javax.swing.JSlider" name="servoControlSlider">
           <Properties>
             <Property name="majorTickSpacing" type="int" value="5"/>
             <Property name="maximum" type="int" value="90"/>
@@ -351,10 +351,10 @@
             <Property name="value" type="int" value="0"/>
           </Properties>
           <Events>
-            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="servoControlSlider2StateChanged"/>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="servoControlSliderStateChanged"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JComboBox" name="servoControlDropdown2">
+        <Component class="javax.swing.JComboBox" name="servoControlDropdown">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Courier New" size="11" style="0"/>
@@ -381,7 +381,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="pulseWidthLabel2">
+        <Component class="javax.swing.JLabel" name="servoControlLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="0.0"/>
           </Properties>
