@@ -80,8 +80,8 @@ public class ControlSendProcess extends Thread
                 {
                     
                     // Get the joystick axis values
-                    double joystickXValue = gamepad.getComponentValue(2);
-                    double joystickYValue = gamepad.getComponentValue(1);
+                    double joystickXValue = joystick.getComponentValue(2);
+                    double joystickYValue = joystick.getComponentValue(1);
                          
                     // Ignore joystick values under a certain 
                     if ((joystickXValue < 0.3) && (joystickXValue > -0.3)) joystickXValue = 0;
