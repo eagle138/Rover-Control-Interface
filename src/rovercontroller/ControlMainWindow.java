@@ -203,8 +203,7 @@ public class ControlMainWindow extends javax.swing.JFrame
     //--------------------------------------------------------------------------
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         roverConnectionStatusPanel = new javax.swing.JPanel();
         roverConnectionStatusDisplayLabel = new javax.swing.JTextField();
@@ -248,7 +247,7 @@ public class ControlMainWindow extends javax.swing.JFrame
         roverIPLabel.setText("Rover IP:");
 
         roverIPDisplayLabel.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        roverIPDisplayLabel.setText("---------------");
+        roverIPDisplayLabel.setText("REDACTED");
 
         cpuUsageLabel.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         cpuUsageLabel.setText("CPU Usage:");
@@ -331,7 +330,6 @@ public class ControlMainWindow extends javax.swing.JFrame
         roverConnectionStatusPanelLayout.setVerticalGroup(
             roverConnectionStatusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roverConnectionStatusPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(roverConnectionStatusDisplayLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(roverConnectionStatusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -364,36 +362,31 @@ public class ControlMainWindow extends javax.swing.JFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(roverConnectionStatusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(speedLabel)
-                    .addComponent(speedDisplayLabel)))
+                    .addComponent(speedDisplayLabel))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         windowsMenu.setText("Open");
 
         armControlWindowItem.setText("Arm Control Window");
-        armControlWindowItem.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        armControlWindowItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 armControlWindowItemActionPerformed(evt);
             }
         });
         windowsMenu.add(armControlWindowItem);
 
         videoControlWindowItem.setText("Video Control Window");
-        videoControlWindowItem.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        videoControlWindowItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 videoControlWindowItemActionPerformed(evt);
             }
         });
         windowsMenu.add(videoControlWindowItem);
 
         utilityControlWindowItem.setText("Utility Control Window");
-        utilityControlWindowItem.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        utilityControlWindowItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 utilityControlWindowItemActionPerformed(evt);
             }
         });
@@ -421,7 +414,7 @@ public class ControlMainWindow extends javax.swing.JFrame
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mapPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(mapPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(roverConnectionStatusPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

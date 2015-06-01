@@ -110,8 +110,7 @@ public class ControlArmWindow extends javax.swing.JFrame
     //--------------------------------------------------------------------------
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         positionsPanel = new javax.swing.JPanel();
         closeButton = new javax.swing.JButton();
@@ -145,46 +144,36 @@ public class ControlArmWindow extends javax.swing.JFrame
         positionsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Positions", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         closeButton.setToolTipText("Close claw");
-        closeButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 closeButtonActionPerformed(evt);
             }
         });
 
         openButton.setToolTipText("Open claw");
-        openButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        openButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 openButtonActionPerformed(evt);
             }
         });
 
         homeButton.setToolTipText("Return to home position");
-        homeButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        homeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeButtonActionPerformed(evt);
             }
         });
 
         deployButton.setToolTipText("Move to deployed position");
-        deployButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        deployButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deployButtonActionPerformed(evt);
             }
         });
 
         basketButton.setToolTipText("Move to basket position");
-        basketButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        basketButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 basketButtonActionPerformed(evt);
             }
         });
@@ -225,16 +214,14 @@ public class ControlArmWindow extends javax.swing.JFrame
         baseAzLabel.setText("Base Azimuth:");
 
         baseAzSlider.setMajorTickSpacing(1);
-        baseAzSlider.setMaximum(90);
-        baseAzSlider.setMinimum(-90);
+        baseAzSlider.setMaximum(180);
+        baseAzSlider.setMinimum(-180);
         baseAzSlider.setMinorTickSpacing(1);
         baseAzSlider.setSnapToTicks(true);
         baseAzSlider.setToolTipText("0"); // NOI18N
         baseAzSlider.setValue(0);
-        baseAzSlider.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        baseAzSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 baseAzSliderStateChanged(evt);
             }
         });
@@ -243,15 +230,13 @@ public class ControlArmWindow extends javax.swing.JFrame
         baseEleLabel.setText("Base Elevation:");
 
         baseEleSlider.setMajorTickSpacing(1);
-        baseEleSlider.setMaximum(90);
-        baseEleSlider.setMinimum(-90);
+        baseEleSlider.setMaximum(180);
+        baseEleSlider.setMinimum(-180);
         baseEleSlider.setMinorTickSpacing(1);
         baseEleSlider.setSnapToTicks(true);
         baseEleSlider.setValue(0);
-        baseEleSlider.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        baseEleSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 baseEleSliderStateChanged(evt);
             }
         });
@@ -260,15 +245,13 @@ public class ControlArmWindow extends javax.swing.JFrame
         elbowLabel.setText("Elbow:");
 
         elbowSlider.setMajorTickSpacing(1);
-        elbowSlider.setMaximum(90);
-        elbowSlider.setMinimum(-90);
+        elbowSlider.setMaximum(180);
+        elbowSlider.setMinimum(-180);
         elbowSlider.setMinorTickSpacing(1);
         elbowSlider.setSnapToTicks(true);
         elbowSlider.setValue(0);
-        elbowSlider.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        elbowSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 elbowSliderStateChanged(evt);
             }
         });
@@ -277,15 +260,13 @@ public class ControlArmWindow extends javax.swing.JFrame
         wristEleLabel.setText("Wrist Elevation:");
 
         wristEleSlider.setMajorTickSpacing(1);
-        wristEleSlider.setMaximum(90);
-        wristEleSlider.setMinimum(-90);
+        wristEleSlider.setMaximum(180);
+        wristEleSlider.setMinimum(-180);
         wristEleSlider.setMinorTickSpacing(1);
         wristEleSlider.setSnapToTicks(true);
         wristEleSlider.setValue(0);
-        wristEleSlider.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        wristEleSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 wristEleSliderStateChanged(evt);
             }
         });
@@ -294,15 +275,13 @@ public class ControlArmWindow extends javax.swing.JFrame
         wristRotLabel.setText("Wrist Rotation:");
 
         wristRotSlider.setMajorTickSpacing(1);
-        wristRotSlider.setMaximum(90);
-        wristRotSlider.setMinimum(-90);
+        wristRotSlider.setMaximum(180);
+        wristRotSlider.setMinimum(-180);
         wristRotSlider.setMinorTickSpacing(1);
         wristRotSlider.setSnapToTicks(true);
         wristRotSlider.setValue(0);
-        wristRotSlider.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        wristRotSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 wristRotSliderStateChanged(evt);
             }
         });
@@ -311,15 +290,13 @@ public class ControlArmWindow extends javax.swing.JFrame
         clawLabel.setText("Claw:");
 
         clawSlider.setMajorTickSpacing(1);
-        clawSlider.setMaximum(90);
+        clawSlider.setMaximum(180);
         clawSlider.setMinimum(-180);
         clawSlider.setMinorTickSpacing(1);
         clawSlider.setSnapToTicks(true);
         clawSlider.setValue(0);
-        clawSlider.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        clawSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 clawSliderStateChanged(evt);
             }
         });
@@ -520,24 +497,40 @@ public class ControlArmWindow extends javax.swing.JFrame
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_homeButtonActionPerformed
     {//GEN-HEADEREND:event_homeButtonActionPerformed
                 
-//        // Home position values
-//        int baseAzValue =   0;
-//        int baseEleValue =  0;
-//        int elbowValue =    0;
-//        int wristEleValue = 0;
-//        int wristRotValue = 0;
-//        
-//        // Send the JSON formatted servo move commands
-//        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_AZIMUTH) + ", \"angle\":" + (baseAzValue) + "}");
-//        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_ELEVATION) + ", \"angle\":" + (baseEleValue) + "}");
-//        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_ELBOW) + ", \"angle\":" + (elbowValue) + "}");
-//        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ELEVATION) + ", \"angle\":" + (wristEleValue) + "}");
-//        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ROTATION) + ", \"angle\":" + (wristRotValue) + "}");
-        //ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_AZIMUTH) + ", \"angle\":" + (0.0) + "}");
-       //ControlCommunicator.sendCommand("{\"command\":\"clawinc\", \"dx\":" + (-1.0) + ", \"dy\":" + (0.0) + ", \"dz\":" + (0.0) + "}");
+        // Home position values
+        int baseAzValue =   0;
+        int baseEleValue =  0;
+        int elbowValue =    0;
+        int wristEleValue = 0;
+        int wristRotValue = 0;
         
-    //ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (6) + ", \"angle\":" + (0.0) + "}");
-    ControlCommunicator.sendCommand("{\"command\":\"gpiotog\", \"pin\":" + (12) + "}");
+        try
+        {
+            
+            // Move the base elevation servo
+            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_ELEVATION) + ", \"angle\":" + (baseEleValue) + "}");
+            Thread.sleep(2000);
+            
+            // Move the elbow servo
+            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_ELBOW) + ", \"angle\":" + (elbowValue) + "}");
+            Thread.sleep(2000);
+            
+            // Move the base azimuth servo
+            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_AZIMUTH) + ", \"angle\":" + (baseAzValue) + "}");
+            Thread.sleep(2000);
+            
+            // Move the wrist servos
+            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ELEVATION) + ", \"angle\":" + (wristEleValue) + "}");
+            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ROTATION) + ", \"angle\":" + (wristRotValue) + "}");
+            
+        } // try
+        catch(Exception ex)
+        {
+            
+            System.out.println("ERROR: Error while sleeping thread!");
+            System.out.println(ex);
+            
+        } // catch
         
     }//GEN-LAST:event_homeButtonActionPerformed
 
@@ -545,38 +538,80 @@ public class ControlArmWindow extends javax.swing.JFrame
     {//GEN-HEADEREND:event_deployButtonActionPerformed
                 
         // Deploy position values
-//        int baseAzValue =   25;
-//        int baseEleValue =  -50;
-//        int elbowValue =    -55;
-//        int wristEleValue = 30;
-//        int wristRotValue = 45;
-//        
-//        // Send the JSON formatted servo move commands
-//        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_AZIMUTH) + ", \"angle\":" + (baseAzValue) + "}");
-//        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_ELEVATION) + ", \"angle\":" + (baseEleValue) + "}");
-//        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_ELBOW) + ", \"angle\":" + (elbowValue) + "}");
-//        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ELEVATION) + ", \"angle\":" + (wristEleValue) + "}");
-//        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ROTATION) + ", \"angle\":" + (wristRotValue) + "}");
-//        
+        int baseAzValue =   0;
+        int baseEleValue =  0;
+        int elbowValue =    0;
+        int wristEleValue = 0;
+        int wristRotValue = 0;
+        
+        try
+        {
+            
+            // Move the base elevation servo
+            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_ELEVATION) + ", \"angle\":" + (baseEleValue) + "}");
+            Thread.sleep(2000);
+            
+            // Move the elbow servo
+            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_ELBOW) + ", \"angle\":" + (elbowValue) + "}");
+            Thread.sleep(2000);
+            
+            // Move the base azimuth servo
+            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_AZIMUTH) + ", \"angle\":" + (baseAzValue) + "}");
+            Thread.sleep(2000);
+            
+            // Move the wrist servos
+            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ELEVATION) + ", \"angle\":" + (wristEleValue) + "}");
+            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ROTATION) + ", \"angle\":" + (wristRotValue) + "}");
+            
+        } // try
+        catch(Exception ex)
+        {
+            
+            System.out.println("ERROR: Error while sleeping thread!");
+            System.out.println(ex);
+            
+        } // catch
+    
     }//GEN-LAST:event_deployButtonActionPerformed
 
     private void basketButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_basketButtonActionPerformed
     {//GEN-HEADEREND:event_basketButtonActionPerformed
                 
-//        // Basket position values
-//        int baseAzValue =   25;
-//        int baseEleValue =  -50;
-//        int elbowValue =    -55;
-//        int wristEleValue = 30;
-//        int wristRotValue = 45;
-//        
-//        // Send the JSON formatted servo move commands
-//        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_AZIMUTH) + ", \"angle\":" + (baseAzValue) + "}");
-//        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_ELEVATION) + ", \"angle\":" + (baseEleValue) + "}");
-//        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_ELBOW) + ", \"angle\":" + (elbowValue) + "}");
-//        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ELEVATION) + ", \"angle\":" + (wristEleValue) + "}");
-//        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ROTATION) + ", \"angle\":" + (wristRotValue) + "}");
-//        
+        // Basket position values
+        int baseAzValue =   0;
+        int baseEleValue =  0;
+        int elbowValue =    0;
+        int wristEleValue = 0;
+        int wristRotValue = 0;
+        
+        try
+        {
+            
+            // Move the base elevation servo
+            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_ELEVATION) + ", \"angle\":" + (baseEleValue) + "}");
+            Thread.sleep(2000);
+            
+            // Move the elbow servo
+            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_ELBOW) + ", \"angle\":" + (elbowValue) + "}");
+            Thread.sleep(2000);
+            
+            // Move the base azimuth servo
+            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_AZIMUTH) + ", \"angle\":" + (baseAzValue) + "}");
+            Thread.sleep(2000);
+            
+            // Move the wrist servos
+            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ELEVATION) + ", \"angle\":" + (wristEleValue) + "}");
+            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ROTATION) + ", \"angle\":" + (wristRotValue) + "}");
+            
+        } // try
+        catch(Exception ex)
+        {
+            
+            System.out.println("ERROR: Error while sleeping thread!");
+            System.out.println(ex);
+            
+        } // catch
+        
     }//GEN-LAST:event_basketButtonActionPerformed
 
     private void closeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_closeButtonActionPerformed

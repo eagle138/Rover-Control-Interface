@@ -243,8 +243,8 @@
         <Component class="javax.swing.JSlider" name="baseAzSlider">
           <Properties>
             <Property name="majorTickSpacing" type="int" value="1"/>
-            <Property name="maximum" type="int" value="90"/>
-            <Property name="minimum" type="int" value="-90"/>
+            <Property name="maximum" type="int" value="180"/>
+            <Property name="minimum" type="int" value="-180"/>
             <Property name="minorTickSpacing" type="int" value="1"/>
             <Property name="snapToTicks" type="boolean" value="true"/>
             <Property name="toolTipText" type="java.lang.String" value="0" noResource="true"/>
@@ -265,8 +265,8 @@
         <Component class="javax.swing.JSlider" name="baseEleSlider">
           <Properties>
             <Property name="majorTickSpacing" type="int" value="1"/>
-            <Property name="maximum" type="int" value="90"/>
-            <Property name="minimum" type="int" value="-90"/>
+            <Property name="maximum" type="int" value="180"/>
+            <Property name="minimum" type="int" value="-180"/>
             <Property name="minorTickSpacing" type="int" value="1"/>
             <Property name="snapToTicks" type="boolean" value="true"/>
             <Property name="value" type="int" value="0"/>
@@ -286,8 +286,8 @@
         <Component class="javax.swing.JSlider" name="elbowSlider">
           <Properties>
             <Property name="majorTickSpacing" type="int" value="1"/>
-            <Property name="maximum" type="int" value="90"/>
-            <Property name="minimum" type="int" value="-90"/>
+            <Property name="maximum" type="int" value="180"/>
+            <Property name="minimum" type="int" value="-180"/>
             <Property name="minorTickSpacing" type="int" value="1"/>
             <Property name="snapToTicks" type="boolean" value="true"/>
             <Property name="value" type="int" value="0"/>
@@ -307,8 +307,8 @@
         <Component class="javax.swing.JSlider" name="wristEleSlider">
           <Properties>
             <Property name="majorTickSpacing" type="int" value="1"/>
-            <Property name="maximum" type="int" value="90"/>
-            <Property name="minimum" type="int" value="-90"/>
+            <Property name="maximum" type="int" value="180"/>
+            <Property name="minimum" type="int" value="-180"/>
             <Property name="minorTickSpacing" type="int" value="1"/>
             <Property name="snapToTicks" type="boolean" value="true"/>
             <Property name="value" type="int" value="0"/>
@@ -328,8 +328,8 @@
         <Component class="javax.swing.JSlider" name="wristRotSlider">
           <Properties>
             <Property name="majorTickSpacing" type="int" value="1"/>
-            <Property name="maximum" type="int" value="90"/>
-            <Property name="minimum" type="int" value="-90"/>
+            <Property name="maximum" type="int" value="180"/>
+            <Property name="minimum" type="int" value="-180"/>
             <Property name="minorTickSpacing" type="int" value="1"/>
             <Property name="snapToTicks" type="boolean" value="true"/>
             <Property name="value" type="int" value="0"/>
@@ -349,7 +349,7 @@
         <Component class="javax.swing.JSlider" name="clawSlider">
           <Properties>
             <Property name="majorTickSpacing" type="int" value="1"/>
-            <Property name="maximum" type="int" value="90"/>
+            <Property name="maximum" type="int" value="180"/>
             <Property name="minimum" type="int" value="-180"/>
             <Property name="minorTickSpacing" type="int" value="1"/>
             <Property name="snapToTicks" type="boolean" value="true"/>

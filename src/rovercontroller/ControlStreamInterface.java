@@ -28,8 +28,8 @@ public class ControlStreamInterface
     static String gstreamerPath = "resources/gstreamer/1.0/x86/bin/gst-launch-1.0.exe";
     
     // Gstreamer port settings
-    private static int videoReceivePort = 1338;
-    private static int audioReceivePort = 1339;
+    private static final int videoReceivePort = 1338;
+    private static final int audioReceivePort = 1339;
     
     //--------------------------------------------------------------------------
     // Name:        startVideoReceive
@@ -142,4 +142,4 @@ public class ControlStreamInterface
 
     } // stopAudioReceive
     
-}
+} // ControlStreamInterface class
