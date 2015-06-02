@@ -30,7 +30,7 @@ public class ControlSendProcess extends Thread
     // Joystick and gamepad minimum values. Input valued below this will be
     // ignored to help prevent cases where the joysticks don't return exactly
     // to zero when let go.
-    double joystickMinValue = 0.3;
+    double joystickMinValue = 0.15;
     double gamepadMinValue = 0.3;
     
     // Maximum steering angle for the steering controls
@@ -59,7 +59,7 @@ public class ControlSendProcess extends Thread
 
         // Steering angles and motor speeds for the previous loop iteration
         double prevSteeringAngle = 0;
-        double prevMotorAngle = 0;
+        double prevMotorSpeed = 0;
         
         // Loop to continually check for user input from gamepads and joysticks
         // and send it to the rover at the defined interval.
@@ -89,26 +89,26 @@ public class ControlSendProcess extends Thread
                     
                     // Round the joystick axis values and multiply by the 
                     // maximum values for steering and motor speed
-                    double steeringAngle = round(joystickXValue, 2) * maxSteeringAngle;
-                    double motorSpeed = round(joystickYValue, 2) * maxMotorSpeed;
+                    double steeringAngle = (round(joystickXValue, 2) * maxSteeringAngle);
+                    double motorSpeed = (round(joystickYValue, 2) * maxMotorSpeed);
 
                     // If the steering angle has changed
                     if (steeringAngle != prevSteeringAngle)
                     {
                         
-                        steeringAngle = joystickXValue;
-                        
+                        prevSteeringAngle = steeringAngle;
+
                         // Get the JSON formatted steer command and send it
                         ControlCommunicator.sendCommand("{\"command\":\"steer\", \"angle\":" + steeringAngle + "}");
                         
                     } // if
 
                     // If the motor speed has changed
-                    if (motorSpeed != prevMotorAngle)
+                    if (motorSpeed != prevMotorSpeed)
                     {
 
-                        motorSpeed = joystickYValue;
-
+                        prevMotorSpeed = motorSpeed;
+                        
                         // Send the JSON formatted motor speed command
                         ControlCommunicator.sendCommand("{\"command\":\"motorspeed\", \"speed\":" + motorSpeed + "}");
 
