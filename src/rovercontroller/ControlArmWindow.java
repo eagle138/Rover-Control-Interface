@@ -578,11 +578,11 @@ public class ControlArmWindow extends javax.swing.JFrame
     {//GEN-HEADEREND:event_basketButtonActionPerformed
                 
         // Basket position values
-        int baseAzValue =   0;
-        int baseEleValue =  0;
-        int elbowValue =    0;
-        int wristEleValue = 0;
-        int wristRotValue = 0;
+        int baseAzValue =   59;
+        int baseEleValue =  109;
+        int elbowValue =    153;
+        int wristEleValue = 25;
+        int wristRotValue = 48;
         
         try
         {
