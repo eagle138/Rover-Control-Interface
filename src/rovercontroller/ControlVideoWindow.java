@@ -94,16 +94,18 @@ public class ControlVideoWindow extends javax.swing.JFrame
         resolutionDropdown = new javax.swing.JComboBox();
         protocolLabel = new javax.swing.JLabel();
         protocolDropdown = new javax.swing.JComboBox();
-        switchCameraButton = new javax.swing.JButton();
+        startReceiveButton = new javax.swing.JButton();
         iframeLabel = new javax.swing.JLabel();
         iframeField = new javax.swing.JTextField();
         cameraDropdown = new javax.swing.JComboBox();
         resolutionLabel = new javax.swing.JLabel();
         framerateDropdown = new javax.swing.JComboBox();
+        stopReceiveButton = new javax.swing.JButton();
         cameraMastControlPanel = new javax.swing.JPanel();
         mastDeployButton = new javax.swing.JButton();
         mastStowButton = new javax.swing.JButton();
         cameraControlJoystick = new rovercontroller.VirtualJoystick();
+        cameraHomeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Rover Video Control");
@@ -112,7 +114,7 @@ public class ControlVideoWindow extends javax.swing.JFrame
         videoStreamControlPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Video Stream Control", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         startStreamButton.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        startStreamButton.setText("Start Stream");
+        startStreamButton.setText("Start Rover Stream");
         startStreamButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -131,7 +133,7 @@ public class ControlVideoWindow extends javax.swing.JFrame
         framerateLabel.setText("Framerate:");
 
         stopStreamButton.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        stopStreamButton.setText("Stop Stream");
+        stopStreamButton.setText("Stop Rover Stream");
         stopStreamButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -150,13 +152,13 @@ public class ControlVideoWindow extends javax.swing.JFrame
 
         protocolDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "UDP", "TCP" }));
 
-        switchCameraButton.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        switchCameraButton.setText("Switch Camera");
-        switchCameraButton.addActionListener(new java.awt.event.ActionListener()
+        startReceiveButton.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        startReceiveButton.setText("Start Receive");
+        startReceiveButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                switchCameraButtonActionPerformed(evt);
+                startReceiveButtonActionPerformed(evt);
             }
         });
 
@@ -166,12 +168,22 @@ public class ControlVideoWindow extends javax.swing.JFrame
         iframeField.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         iframeField.setText("1000");
 
-        cameraDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Camera 0", "Camera 1" }));
+        cameraDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Camera 0 - Front", "Camera 1 - Mast", "Camera 2 - Back" }));
 
         resolutionLabel.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         resolutionLabel.setText("Resolution:");
 
         framerateDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30", "24", "20", "15", "10", "7", "5", " " }));
+
+        stopReceiveButton.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        stopReceiveButton.setText("Stop Receive");
+        stopReceiveButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                stopReceiveButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout videoStreamControlPanelLayout = new javax.swing.GroupLayout(videoStreamControlPanel);
         videoStreamControlPanel.setLayout(videoStreamControlPanelLayout);
@@ -196,7 +208,7 @@ public class ControlVideoWindow extends javax.swing.JFrame
                                     .addComponent(bitrateField)
                                     .addComponent(resolutionDropdown, 0, 119, Short.MAX_VALUE)
                                     .addComponent(iframeField)))
-                            .addComponent(switchCameraButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(startReceiveButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(videoStreamControlPanelLayout.createSequentialGroup()
                         .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -205,7 +217,8 @@ public class ControlVideoWindow extends javax.swing.JFrame
                         .addGap(4, 4, 4)
                         .addGroup(videoStreamControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cameraDropdown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(protocolDropdown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(protocolDropdown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(stopReceiveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         videoStreamControlPanelLayout.setVerticalGroup(
@@ -240,8 +253,10 @@ public class ControlVideoWindow extends javax.swing.JFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(stopStreamButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(switchCameraButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(startReceiveButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(stopReceiveButton)
+                .addGap(7, 7, 7))
         );
 
         cameraMastControlPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Camera Mast Control", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
@@ -276,6 +291,16 @@ public class ControlVideoWindow extends javax.swing.JFrame
 
             cameraControlJoystick.setReturnToCenter(false);
 
+            cameraHomeButton.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+            cameraHomeButton.setText("Camera Home");
+            cameraHomeButton.addActionListener(new java.awt.event.ActionListener()
+            {
+                public void actionPerformed(java.awt.event.ActionEvent evt)
+                {
+                    cameraHomeButtonActionPerformed(evt);
+                }
+            });
+
             javax.swing.GroupLayout cameraMastControlPanelLayout = new javax.swing.GroupLayout(cameraMastControlPanel);
             cameraMastControlPanel.setLayout(cameraMastControlPanelLayout);
             cameraMastControlPanelLayout.setHorizontalGroup(
@@ -284,20 +309,23 @@ public class ControlVideoWindow extends javax.swing.JFrame
                     .addContainerGap()
                     .addGroup(cameraMastControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(cameraControlJoystick, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(mastDeployButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(mastStowButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(mastDeployButton, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                        .addComponent(mastStowButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cameraHomeButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addContainerGap())
             );
             cameraMastControlPanelLayout.setVerticalGroup(
                 cameraMastControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(cameraMastControlPanelLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(cameraControlJoystick, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cameraControlJoystick, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(cameraHomeButton)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(mastStowButton)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(mastDeployButton)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap())
             );
 
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -306,18 +334,18 @@ public class ControlVideoWindow extends javax.swing.JFrame
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(videoStreamControlPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cameraMastControlPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(videoStreamControlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(cameraMastControlPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap())
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(videoStreamControlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(cameraMastControlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(cameraMastControlPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(videoStreamControlPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
 
@@ -377,10 +405,12 @@ private void cameraControlJoystickStateChanged(javax.swing.event.ChangeEvent evt
         
     }//GEN-LAST:event_stopStreamButtonActionPerformed
 
-    private void switchCameraButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_switchCameraButtonActionPerformed
-    {//GEN-HEADEREND:event_switchCameraButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_switchCameraButtonActionPerformed
+    private void startReceiveButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_startReceiveButtonActionPerformed
+    {//GEN-HEADEREND:event_startReceiveButtonActionPerformed
+        
+        ControlStreamInterface.startVideoReceive();
+        
+    }//GEN-LAST:event_startReceiveButtonActionPerformed
 
     private void mastDeployButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mastDeployButtonActionPerformed
     {//GEN-HEADEREND:event_mastDeployButtonActionPerformed
@@ -398,11 +428,32 @@ private void cameraControlJoystickStateChanged(javax.swing.event.ChangeEvent evt
         
     }//GEN-LAST:event_mastStowButtonActionPerformed
 
+    private void cameraHomeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cameraHomeButtonActionPerformed
+    {//GEN-HEADEREND:event_cameraHomeButtonActionPerformed
+        
+        // Camera angles
+        int cameraAzAngle = 0;
+        int cameraEleAngle = 0;
+        
+        // Send the JSON formatted servo command to turn the camera mast servos
+        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (11) + ", \"angle\":" + (cameraAzAngle) + "}");
+        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (12) + ", \"angle\":" + (cameraEleAngle) + "}");
+        
+    }//GEN-LAST:event_cameraHomeButtonActionPerformed
+
+    private void stopReceiveButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_stopReceiveButtonActionPerformed
+    {//GEN-HEADEREND:event_stopReceiveButtonActionPerformed
+        
+        ControlStreamInterface.stopVideoReceive();
+        
+    }//GEN-LAST:event_stopReceiveButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bitrateField;
     private javax.swing.JLabel bitrateLabel;
     private rovercontroller.VirtualJoystick cameraControlJoystick;
     private javax.swing.JComboBox cameraDropdown;
+    private javax.swing.JButton cameraHomeButton;
     private javax.swing.JLabel cameraLabel;
     private javax.swing.JPanel cameraMastControlPanel;
     private javax.swing.JComboBox framerateDropdown;
@@ -415,9 +466,10 @@ private void cameraControlJoystickStateChanged(javax.swing.event.ChangeEvent evt
     private javax.swing.JLabel protocolLabel;
     private javax.swing.JComboBox resolutionDropdown;
     private javax.swing.JLabel resolutionLabel;
+    private javax.swing.JButton startReceiveButton;
     private javax.swing.JButton startStreamButton;
+    private javax.swing.JButton stopReceiveButton;
     private javax.swing.JButton stopStreamButton;
-    private javax.swing.JButton switchCameraButton;
     private javax.swing.JPanel videoStreamControlPanel;
     // End of variables declaration//GEN-END:variables
 }

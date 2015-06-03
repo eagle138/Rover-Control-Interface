@@ -39,32 +39,34 @@ public class ControlStreamInterface
     //--------------------------------------------------------------------------
     public static void startVideoReceive()
     {
-
-        // Stop the any currently running gstreamer process
-        stopVideoReceive();
         
-        // Form the command used to start gstreamer to receive the video stream
-        String gstreamerCommand = gstreamerPath + " udpsrc port=" + videoReceivePort + " ! h264parse ! avdec_h264 ! autovideosink sync=false";
-
-        // Get the current runtime to execute the gstreamer command
-        Runtime runtime = Runtime.getRuntime();
-
-        try
-        {
-
-            // Execute the gstreamer command to start gstreamer
-            videoReceiveProcess = runtime.exec(gstreamerCommand);
-            
-            System.out.println("Started receiving gstreamer video stream.");
-
-        } // try
-        catch (Exception ex)
+        if(videoReceiveProcess == null)
         {
             
-            System.out.println("ERROR: Failed to start gstreamer video receive.");
+            // Form the command used to start gstreamer to receive the video stream
+            String gstreamerCommand = gstreamerPath + " udpsrc port=" + videoReceivePort + " ! h264parse ! avdec_h264 ! autovideosink sync=false";
 
-        } // catch
+            // Get the current runtime to execute the gstreamer command
+            Runtime runtime = Runtime.getRuntime();
 
+            try
+            {
+
+                // Execute the gstreamer command to start gstreamer
+                videoReceiveProcess = runtime.exec(gstreamerCommand);
+
+                System.out.println("Started receiving gstreamer video stream.");
+
+            } // try
+            catch (Exception ex)
+            {
+
+                System.out.println("ERROR: Failed to start gstreamer video receive.");
+
+            } // catch
+
+        } // if
+        
     } // startVideoReceive
     
     //--------------------------------------------------------------------------
@@ -75,32 +77,34 @@ public class ControlStreamInterface
     //--------------------------------------------------------------------------
     public static void startAudioReceive()
     {
-
-        // Stop the any currently running audio stream
-        stopAudioReceive();
         
-        // Form the command used to start gstreamer to receive the audio stream
-        String gstreamerCommand = gstreamerPath + " udpsrc port=" + audioReceivePort + " caps=\"application/x-rtp\" ! rtppcmadepay ! alawdec ! autoaudiosink";
-
-        // Get the current runtime to execute the gstreamer command
-        Runtime runtime = Runtime.getRuntime();
-
-        try
+        if(audioReceiveProcess == null)
         {
+        
+            // Form the command used to start gstreamer to receive the audio stream
+            String gstreamerCommand = gstreamerPath + " udpsrc port=" + audioReceivePort + " caps=\"application/x-rtp\" ! rtppcmadepay ! alawdec ! autoaudiosink";
 
-            // Execute the gstreamer command to start gstreamer
-            audioReceiveProcess = runtime.exec(gstreamerCommand);
+            // Get the current runtime to execute the gstreamer command
+            Runtime runtime = Runtime.getRuntime();
+
+            try
+            {
+
+                // Execute the gstreamer command to start gstreamer
+                audioReceiveProcess = runtime.exec(gstreamerCommand);
+
+                System.out.println("Started receiving gstreamer audio stream.");
+
+            } // try
+            catch (Exception ex)
+            {
+
+                System.out.println("ERROR: Failed to start gstreamer audio receive.");
+                System.out.println(ex);
+
+            } // catch
             
-            System.out.println("Started receiving gstreamer audio stream.");
-
-        } // try
-        catch (Exception ex)
-        {
-            
-            System.out.println("ERROR: Failed to start gstreamer audio receive.");
-            System.out.println(ex);
-
-        } // catch
+        } // if
 
     } // startAudioReceive
 
