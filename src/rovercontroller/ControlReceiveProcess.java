@@ -81,12 +81,21 @@ public class ControlReceiveProcess extends Thread
                         // created by Stephen Krauss Dec. 2015
                         String API_KEY = "AIzaSyCS2GRFCIvolvoawtUIyUbjBde6INSrRbw";
                         String mapRequestUrl = "https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lon + "&zoom=20&size=1000x1000&maptype=satellite&format=jpg&markers=color:red|" + lat + "," + lon + "&key=" + API_KEY;
-
-                        System.out.println(mapRequestUrl);
                         
-                        // Set the map panel to display the GPS map
-                        ControlMain.mainWindow.setMapUrl(mapRequestUrl);
-                        
+                        try
+                        {
+                            
+                            // Set the map panel to display the GPS map
+                            ControlMain.mainWindow.setMapUrl(mapRequestUrl);
+                            
+                        } // try
+                        catch(Exception ex)
+                        {
+                            
+                            System.out.println("ERROR: Could not set GPS map URL!");
+                            
+                        } // catch
+                   
                     } // else
 
                 } // if

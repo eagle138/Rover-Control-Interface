@@ -26,6 +26,9 @@ public class ControlUtilityWindow extends javax.swing.JFrame
     private static final int SERVO_WHEEL_BACK_RIGHT    = 2;
     private static final int SERVO_WHEEL_BACK_LEFT     = 3;
     
+    // Turn mode variable. True for radial turn, false for normal steering
+    public boolean radialTurnEnabled = false;
+    
     //--------------------------------------------------------------------------
     // ControlGui Constructor
     //--------------------------------------------------------------------------
@@ -96,7 +99,7 @@ public class ControlUtilityWindow extends javax.swing.JFrame
 
         motorControlPanel = new javax.swing.JPanel();
         toggleBrakesButton = new javax.swing.JToggleButton();
-        toggleBrakesButton1 = new javax.swing.JToggleButton();
+        toggleRadialTurnButton = new javax.swing.JToggleButton();
         virtualDrivingPanel = new javax.swing.JPanel();
         drivingJoystick = new rovercontroller.VirtualJoystick();
         steeringTrimPanel = new javax.swing.JPanel();
@@ -128,7 +131,14 @@ public class ControlUtilityWindow extends javax.swing.JFrame
             }
         });
 
-        toggleBrakesButton1.setText("Toggle Brakes");
+        toggleRadialTurnButton.setText("Toggle Radial Turn");
+        toggleRadialTurnButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                toggleRadialTurnButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout motorControlPanelLayout = new javax.swing.GroupLayout(motorControlPanel);
         motorControlPanel.setLayout(motorControlPanelLayout);
@@ -137,7 +147,7 @@ public class ControlUtilityWindow extends javax.swing.JFrame
             .addGroup(motorControlPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(motorControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(toggleBrakesButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(toggleRadialTurnButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(toggleBrakesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -147,7 +157,7 @@ public class ControlUtilityWindow extends javax.swing.JFrame
                 .addContainerGap()
                 .addComponent(toggleBrakesButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(toggleBrakesButton1)
+                .addComponent(toggleRadialTurnButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -363,25 +373,41 @@ public class ControlUtilityWindow extends javax.swing.JFrame
             pack();
         }// </editor-fold>//GEN-END:initComponents
 
-    private void drivingJoystickStateChanged(javax.swing.event.ChangeEvent evt)                                                
+private void drivingJoystickStateChanged(javax.swing.event.ChangeEvent evt)                                                
 {                                       
 
     // Motor speed and driving angle maximum value
     double maxMotorSpeed = 1.0;
-    int maxSteeringAngle = 30;
+    double maxSteeringAngle = 35;
+    double maxRadialTurnSpeed = 1.0;
 
     // Get the joystick axes values
     double xAxisValue = drivingJoystick.joyXAxis;
     double yAxisValue = drivingJoystick.joyYAxis;
 
-    // Convert the axis values into steering angle and motor speed
-    double motorSpeed = yAxisValue * maxMotorSpeed * -1.0;
-    int steeringAngle = (int)(xAxisValue * maxSteeringAngle);
-
-    // Send the JSON formatted commands
-    ControlCommunicator.sendCommand("{\"command\":\"steer\", \"angle\":" + steeringAngle + "}");
-    ControlCommunicator.sendCommand("{\"command\":\"motorspeed\", \"speed\":" + motorSpeed + "}");
-
+    if(radialTurnEnabled == true)
+    {
+     
+        // Convert the x axis value into radial turn speed
+        double radialTurnSpeed = xAxisValue * maxRadialTurnSpeed;
+        
+        // Send the radial turn command
+        ControlCommunicator.sendCommand("{\"command\":\"place\", \"speed\":" + radialTurnSpeed + "}");
+        
+    } // if
+    else
+    {
+        
+        // Convert the axis values into steering angle and motor speed
+        double motorSpeed = yAxisValue * maxMotorSpeed * -1.0;
+        int steeringAngle = (int)(xAxisValue * maxSteeringAngle);
+        
+        // Send the steering and motor speed commands
+        ControlCommunicator.sendCommand("{\"command\":\"steer\", \"angle\":" + steeringAngle + "}");
+        ControlCommunicator.sendCommand("{\"command\":\"motorspeed\", \"speed\":" + motorSpeed + "}");
+        
+    } // else
+ 
 }  
     
     private void toggleBrakesButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_toggleBrakesButtonActionPerformed
@@ -470,6 +496,26 @@ public class ControlUtilityWindow extends javax.swing.JFrame
         
     }//GEN-LAST:event_servoControlSliderStateChanged
 
+    private void toggleRadialTurnButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_toggleRadialTurnButtonActionPerformed
+    {//GEN-HEADEREND:event_toggleRadialTurnButtonActionPerformed
+               
+        if(toggleRadialTurnButton.isSelected())
+        {
+            
+            radialTurnEnabled = true;
+                    
+        } // if
+
+        // Otherwise, send brake off command
+        else
+        {
+            
+            radialTurnEnabled = false;
+            
+        } // else
+        
+    }//GEN-LAST:event_toggleRadialTurnButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backLeftWheelLabel;
     private javax.swing.JSpinner backLeftWheelSpinner;
@@ -488,7 +534,7 @@ public class ControlUtilityWindow extends javax.swing.JFrame
     private javax.swing.JSlider servoControlSlider;
     private javax.swing.JPanel steeringTrimPanel;
     private javax.swing.JToggleButton toggleBrakesButton;
-    private javax.swing.JToggleButton toggleBrakesButton1;
+    private javax.swing.JToggleButton toggleRadialTurnButton;
     private javax.swing.JPanel virtualDrivingPanel;
     // End of variables declaration//GEN-END:variables
 }

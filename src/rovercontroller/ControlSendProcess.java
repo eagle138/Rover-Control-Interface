@@ -39,6 +39,9 @@ public class ControlSendProcess extends Thread
     // Maximum motor speed percentage (1.0 = 100%)
     double maxMotorSpeed = 1.0;
     
+    // Maximum radial turn speed percentage (1.0 = 100%)
+    double maxRadialTurnSpeed = 1.0;
+    
     // Arm movement speed multiplier. Makes the gamepad increment the arm
     // position more quickly
     double armSpeed = 1.0;
@@ -60,6 +63,7 @@ public class ControlSendProcess extends Thread
         // Steering angles and motor speeds for the previous loop iteration
         double prevSteeringAngle = 0;
         double prevMotorSpeed = 0;
+        double prevRadialTurnSpeed = 0;
         
         // Loop to continually check for user input from gamepads and joysticks
         // and send it to the rover at the defined interval.
@@ -83,36 +87,61 @@ public class ControlSendProcess extends Thread
                     double joystickXValue = joystick.getComponentValue(2);
                     double joystickYValue = joystick.getComponentValue(1);
                          
-                    // Ignore joystick values under a certain 
-                    if ((joystickXValue < 0.3) && (joystickXValue > -0.3)) joystickXValue = 0;
-                    if ((joystickYValue < 0.3) && (joystickYValue > -0.3)) joystickYValue = 0;  
-                    
-                    // Round the joystick axis values and multiply by the 
-                    // maximum values for steering and motor speed
-                    double steeringAngle = (round(joystickXValue, 2) * maxSteeringAngle);
-                    double motorSpeed = (round(joystickYValue, 2) * maxMotorSpeed);
+                    // Ignore joystick values under a certain value
+                    if ((joystickXValue < joystickMinValue) && (joystickXValue > -joystickMinValue)) joystickXValue = 0;
+                    if ((joystickYValue < joystickMinValue) && (joystickYValue > -joystickMinValue)) joystickYValue = 0;  
 
-                    // If the steering angle has changed
-                    if (steeringAngle != prevSteeringAngle)
+                    if(ControlMain.utilityWindow.radialTurnEnabled = true)
                     {
                         
-                        prevSteeringAngle = steeringAngle;
+                        // Calculate the radial turn speed from
+                        // the joystick axis values
+                        double radialTurnSpeed = (round(joystickXValue, 2) * maxRadialTurnSpeed);
 
-                        // Get the JSON formatted steer command and send it
-                        ControlCommunicator.sendCommand("{\"command\":\"steer\", \"angle\":" + steeringAngle + "}");
                         
-                    } // if
+                        // If the radial turn speed has changed
+                        if (radialTurnSpeed != prevRadialTurnSpeed)
+                        {
 
-                    // If the motor speed has changed
-                    if (motorSpeed != prevMotorSpeed)
+                            prevRadialTurnSpeed = radialTurnSpeed;
+
+                            // Send the radial turn command
+                            ControlCommunicator.sendCommand("{\"command\":\"place\", \"speed\":" + radialTurnSpeed + "}");
+
+                        } // if
+                        
+                    }
+                    else
                     {
-
-                        prevMotorSpeed = motorSpeed;
                         
-                        // Send the JSON formatted motor speed command
-                        ControlCommunicator.sendCommand("{\"command\":\"motorspeed\", \"speed\":" + motorSpeed + "}");
+                        // Calculate the motor speed and steering angle from
+                        // the joystick axis values
+                        double steeringAngle = (round(joystickXValue, 2) * maxSteeringAngle);
+                        double motorSpeed = (round(joystickYValue, 2) * maxMotorSpeed);
+                        
+                        // If the steering angle has changed
+                        if (steeringAngle != prevSteeringAngle)
+                        {
 
-                    } // if
+                            prevSteeringAngle = steeringAngle;
+
+                            // Get the JSON formatted steer command and send it
+                            ControlCommunicator.sendCommand("{\"command\":\"steer\", \"angle\":" + steeringAngle + "}");
+
+                        } // if
+
+                        // If the motor speed has changed
+                        if (motorSpeed != prevMotorSpeed)
+                        {
+
+                            prevMotorSpeed = motorSpeed;
+
+                            // Send the JSON formatted motor speed command
+                            ControlCommunicator.sendCommand("{\"command\":\"motorspeed\", \"speed\":" + motorSpeed + "}");
+
+                        } // if
+                        
+                    } // else
                     
                 } // if joystick connected
                 

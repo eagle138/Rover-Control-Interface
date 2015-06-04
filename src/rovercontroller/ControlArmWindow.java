@@ -110,7 +110,8 @@ public class ControlArmWindow extends javax.swing.JFrame
     //--------------------------------------------------------------------------
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         positionsPanel = new javax.swing.JPanel();
         closeButton = new javax.swing.JButton();
@@ -140,40 +141,51 @@ public class ControlArmWindow extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Rover Arm Control");
+        setResizable(false);
 
         positionsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Positions", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         closeButton.setToolTipText("Close claw");
-        closeButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        closeButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 closeButtonActionPerformed(evt);
             }
         });
 
         openButton.setToolTipText("Open claw");
-        openButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        openButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 openButtonActionPerformed(evt);
             }
         });
 
         homeButton.setToolTipText("Return to home position");
-        homeButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        homeButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 homeButtonActionPerformed(evt);
             }
         });
 
         deployButton.setToolTipText("Move to deployed position");
-        deployButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        deployButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 deployButtonActionPerformed(evt);
             }
         });
 
         basketButton.setToolTipText("Move to basket position");
-        basketButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        basketButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 basketButtonActionPerformed(evt);
             }
         });
@@ -220,8 +232,10 @@ public class ControlArmWindow extends javax.swing.JFrame
         baseAzSlider.setSnapToTicks(true);
         baseAzSlider.setToolTipText("0"); // NOI18N
         baseAzSlider.setValue(0);
-        baseAzSlider.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+        baseAzSlider.addChangeListener(new javax.swing.event.ChangeListener()
+        {
+            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            {
                 baseAzSliderStateChanged(evt);
             }
         });
@@ -235,8 +249,10 @@ public class ControlArmWindow extends javax.swing.JFrame
         baseEleSlider.setMinorTickSpacing(1);
         baseEleSlider.setSnapToTicks(true);
         baseEleSlider.setValue(0);
-        baseEleSlider.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+        baseEleSlider.addChangeListener(new javax.swing.event.ChangeListener()
+        {
+            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            {
                 baseEleSliderStateChanged(evt);
             }
         });
@@ -250,8 +266,10 @@ public class ControlArmWindow extends javax.swing.JFrame
         elbowSlider.setMinorTickSpacing(1);
         elbowSlider.setSnapToTicks(true);
         elbowSlider.setValue(0);
-        elbowSlider.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+        elbowSlider.addChangeListener(new javax.swing.event.ChangeListener()
+        {
+            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            {
                 elbowSliderStateChanged(evt);
             }
         });
@@ -265,8 +283,10 @@ public class ControlArmWindow extends javax.swing.JFrame
         wristEleSlider.setMinorTickSpacing(1);
         wristEleSlider.setSnapToTicks(true);
         wristEleSlider.setValue(0);
-        wristEleSlider.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+        wristEleSlider.addChangeListener(new javax.swing.event.ChangeListener()
+        {
+            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            {
                 wristEleSliderStateChanged(evt);
             }
         });
@@ -280,8 +300,10 @@ public class ControlArmWindow extends javax.swing.JFrame
         wristRotSlider.setMinorTickSpacing(1);
         wristRotSlider.setSnapToTicks(true);
         wristRotSlider.setValue(0);
-        wristRotSlider.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+        wristRotSlider.addChangeListener(new javax.swing.event.ChangeListener()
+        {
+            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            {
                 wristRotSliderStateChanged(evt);
             }
         });
@@ -295,8 +317,10 @@ public class ControlArmWindow extends javax.swing.JFrame
         clawSlider.setMinorTickSpacing(1);
         clawSlider.setSnapToTicks(true);
         clawSlider.setValue(0);
-        clawSlider.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+        clawSlider.addChangeListener(new javax.swing.event.ChangeListener()
+        {
+            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            {
                 clawSliderStateChanged(evt);
             }
         });
@@ -395,7 +419,7 @@ public class ControlArmWindow extends javax.swing.JFrame
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(armControlPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(positionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -498,11 +522,11 @@ public class ControlArmWindow extends javax.swing.JFrame
     {//GEN-HEADEREND:event_homeButtonActionPerformed
                 
         // Home position values
-        int baseAzValue =   0;
-        int baseEleValue =  0;
-        int elbowValue =    0;
-        int wristEleValue = 0;
-        int wristRotValue = 0;
+        int baseAzValue =   12;
+        int baseEleValue =  -25;
+        int elbowValue =    123;
+        int wristEleValue = -120;
+        int wristRotValue = -180;
         
         try
         {
@@ -581,7 +605,7 @@ public class ControlArmWindow extends javax.swing.JFrame
         int baseAzValue =   59;
         int baseEleValue =  109;
         int elbowValue =    153;
-        int wristEleValue = 25;
+        int wristEleValue = -30;
         int wristRotValue = 48;
         
         try
@@ -618,7 +642,7 @@ public class ControlArmWindow extends javax.swing.JFrame
     {//GEN-HEADEREND:event_closeButtonActionPerformed
                 
         // Close position values
-        int clawValue = -120;
+        int clawValue = -110;
         
         // Send the JSON formatted servo move command
         ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_CLAW) + ", \"angle\":" + (clawValue) + "}");
@@ -629,7 +653,7 @@ public class ControlArmWindow extends javax.swing.JFrame
     {//GEN-HEADEREND:event_openButtonActionPerformed
                 
         // Open position values
-        int clawValue = 0;
+        int clawValue = 62;
         
         // Send the JSON formatted servo move command
         ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_CLAW) + ", \"angle\":" + (clawValue) + "}");
