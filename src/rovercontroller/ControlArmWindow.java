@@ -562,12 +562,15 @@ public class ControlArmWindow extends javax.swing.JFrame
     {//GEN-HEADEREND:event_deployButtonActionPerformed
                 
         // Deploy position values
-        int baseAzValue =   0;
-        int baseEleValue =  0;
-        int elbowValue =    0;
-        int wristEleValue = 0;
+        int baseAzValue =   -50;
+        int baseEleValue =  -2;
+        int elbowValue =    48;
+        int wristEleValue = 28;
         int wristRotValue = 0;
         
+        
+        // FIX ORDER
+        /*
         try
         {
             
@@ -595,6 +598,8 @@ public class ControlArmWindow extends javax.swing.JFrame
             System.out.println(ex);
             
         } // catch
+        * 
+        * */
     
     }//GEN-LAST:event_deployButtonActionPerformed
 
@@ -602,18 +607,18 @@ public class ControlArmWindow extends javax.swing.JFrame
     {//GEN-HEADEREND:event_basketButtonActionPerformed
                 
         // Basket position values
-        int baseAzValue =   59;
-        int baseEleValue =  109;
-        int elbowValue =    153;
-        int wristEleValue = -30;
-        int wristRotValue = 48;
+        int baseAzValue =   57;
+        int baseEleValue =  122;
+        int elbowValue =    157;
+        int wristEleValue = 45;
+        int wristRotValue = 25;
         
         try
         {
             
             // Move the base elevation servo
             ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_ELEVATION) + ", \"angle\":" + (baseEleValue) + "}");
-            Thread.sleep(2000);
+            Thread.sleep(4000);
             
             // Move the elbow servo
             ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_ELBOW) + ", \"angle\":" + (elbowValue) + "}");
