@@ -520,7 +520,8 @@ public class ControlArmWindow extends javax.swing.JFrame
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_homeButtonActionPerformed
     {//GEN-HEADEREND:event_homeButtonActionPerformed
-                
+          
+        /*
         // Home position values
         int baseAzValue =   12;
         int baseEleValue =  -25;
@@ -555,7 +556,7 @@ public class ControlArmWindow extends javax.swing.JFrame
             System.out.println(ex);
             
         } // catch
-        
+        */
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void deployButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_deployButtonActionPerformed
@@ -563,29 +564,26 @@ public class ControlArmWindow extends javax.swing.JFrame
                 
         // Deploy position values
         int baseAzValue =   -50;
-        int baseEleValue =  -2;
+        int baseEleValue =  15;
         int elbowValue =    48;
         int wristEleValue = 28;
         int wristRotValue = 0;
         
-        
-        // FIX ORDER
-        /*
         try
         {
-            
-            // Move the base elevation servo
-            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_ELEVATION) + ", \"angle\":" + (baseEleValue) + "}");
-            Thread.sleep(2000);
-            
-            // Move the elbow servo
-            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_ELBOW) + ", \"angle\":" + (elbowValue) + "}");
-            Thread.sleep(2000);
             
             // Move the base azimuth servo
             ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_AZIMUTH) + ", \"angle\":" + (baseAzValue) + "}");
             Thread.sleep(2000);
+                        
+            // Move the elbow servo
+            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_ELBOW) + ", \"angle\":" + (elbowValue) + "}");
+            Thread.sleep(2000);
             
+            // Move the base elevation servo
+            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_ELEVATION) + ", \"angle\":" + (baseEleValue) + "}");
+            Thread.sleep(2000);
+
             // Move the wrist servos
             ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ELEVATION) + ", \"angle\":" + (wristEleValue) + "}");
             ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ROTATION) + ", \"angle\":" + (wristRotValue) + "}");
@@ -598,9 +596,7 @@ public class ControlArmWindow extends javax.swing.JFrame
             System.out.println(ex);
             
         } // catch
-        * 
-        * */
-    
+
     }//GEN-LAST:event_deployButtonActionPerformed
 
     private void basketButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_basketButtonActionPerformed
@@ -620,14 +616,14 @@ public class ControlArmWindow extends javax.swing.JFrame
             ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_ELEVATION) + ", \"angle\":" + (baseEleValue) + "}");
             Thread.sleep(4000);
             
-            // Move the elbow servo
-            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_ELBOW) + ", \"angle\":" + (elbowValue) + "}");
-            Thread.sleep(2000);
-            
             // Move the base azimuth servo
             ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_AZIMUTH) + ", \"angle\":" + (baseAzValue) + "}");
             Thread.sleep(2000);
             
+            // Move the elbow servo
+            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_ELBOW) + ", \"angle\":" + (elbowValue) + "}");
+            Thread.sleep(2000);
+        
             // Move the wrist servos
             ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ELEVATION) + ", \"angle\":" + (wristEleValue) + "}");
             ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ROTATION) + ", \"angle\":" + (wristRotValue) + "}");

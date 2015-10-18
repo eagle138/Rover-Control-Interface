@@ -27,7 +27,7 @@ public class ControlUtilityWindow extends javax.swing.JFrame
     private static final int SERVO_WHEEL_BACK_LEFT     = 3;
     
     // Turn mode variable. True for radial turn, false for normal steering
-    public boolean radialTurnEnabled = false;
+    private boolean radialTurnEnabled = false;
     
     //--------------------------------------------------------------------------
     // ControlGui Constructor
@@ -413,6 +413,7 @@ private void drivingJoystickStateChanged(javax.swing.event.ChangeEvent evt)
     private void toggleBrakesButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_toggleBrakesButtonActionPerformed
     {//GEN-HEADEREND:event_toggleBrakesButtonActionPerformed
 
+        /*
         // If the button was pressed down, send brake on command
         if(toggleBrakesButton.isSelected())
         {
@@ -424,6 +425,7 @@ private void drivingJoystickStateChanged(javax.swing.event.ChangeEvent evt)
         {
             ControlCommunicator.sendCommand("{\"command\":\"brakeoff\"}");
         } // else
+        */
 
     }//GEN-LAST:event_toggleBrakesButtonActionPerformed
 
