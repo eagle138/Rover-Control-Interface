@@ -98,7 +98,7 @@ public class ControlUtilityWindow extends javax.swing.JFrame
     {
 
         motorControlPanel = new javax.swing.JPanel();
-        toggleBrakesButton = new javax.swing.JToggleButton();
+        enableRcControlButton = new javax.swing.JToggleButton();
         toggleRadialTurnButton = new javax.swing.JToggleButton();
         virtualDrivingPanel = new javax.swing.JPanel();
         drivingJoystick = new rovercontroller.VirtualJoystick();
@@ -122,12 +122,12 @@ public class ControlUtilityWindow extends javax.swing.JFrame
 
         motorControlPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Motor Control", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
-        toggleBrakesButton.setText("Toggle Brakes");
-        toggleBrakesButton.addActionListener(new java.awt.event.ActionListener()
+        enableRcControlButton.setText("Enable RC Control");
+        enableRcControlButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                toggleBrakesButtonActionPerformed(evt);
+                enableRcControlButtonActionPerformed(evt);
             }
         });
 
@@ -148,14 +148,14 @@ public class ControlUtilityWindow extends javax.swing.JFrame
                 .addContainerGap()
                 .addGroup(motorControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(toggleRadialTurnButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(toggleBrakesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(enableRcControlButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         motorControlPanelLayout.setVerticalGroup(
             motorControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(motorControlPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(toggleBrakesButton)
+                .addComponent(enableRcControlButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(toggleRadialTurnButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -392,7 +392,7 @@ private void drivingJoystickStateChanged(javax.swing.event.ChangeEvent evt)
         double radialTurnSpeed = xAxisValue * maxRadialTurnSpeed;
         
         // Send the radial turn command
-        ControlCommunicator.sendCommand("{\"command\":\"place\", \"speed\":" + radialTurnSpeed + "}");
+        RoverInterface.sendCommand("{\"command\":\"place\", \"speed\":" + radialTurnSpeed + "}");
         
     } // if
     else
@@ -403,37 +403,35 @@ private void drivingJoystickStateChanged(javax.swing.event.ChangeEvent evt)
         int steeringAngle = (int)(xAxisValue * maxSteeringAngle);
         
         // Send the steering and motor speed commands
-        ControlCommunicator.sendCommand("{\"command\":\"steer\", \"angle\":" + steeringAngle + "}");
-        ControlCommunicator.sendCommand("{\"command\":\"motorspeed\", \"speed\":" + motorSpeed + "}");
+        RoverInterface.sendCommand("{\"command\":\"steer\", \"angle\":" + steeringAngle + "}");
+        RoverInterface.sendCommand("{\"command\":\"motorspeed\", \"speed\":" + motorSpeed + "}");
         
     } // else
  
 }  
     
-    private void toggleBrakesButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_toggleBrakesButtonActionPerformed
-    {//GEN-HEADEREND:event_toggleBrakesButtonActionPerformed
+    private void enableRcControlButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_enableRcControlButtonActionPerformed
+    {//GEN-HEADEREND:event_enableRcControlButtonActionPerformed
 
-        /*
         // If the button was pressed down, send brake on command
-        if(toggleBrakesButton.isSelected())
+        if(enableRcControlButton.isSelected())
         {
-            ControlCommunicator.sendCommand("{\"command\":\"brakeon\"}");
+            RoverInterface.sendCommand("{\"command\":\"rcmode\"}");
         } // if
 
         // Otherwise, send brake off command
         else
         {
-            ControlCommunicator.sendCommand("{\"command\":\"brakeoff\"}");
+            RoverInterface.sendCommand("{\"command\":\"wifimode\"}");
         } // else
-        */
 
-    }//GEN-LAST:event_toggleBrakesButtonActionPerformed
+    }//GEN-LAST:event_enableRcControlButtonActionPerformed
 
     private void saveTrimButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_saveTrimButtonActionPerformed
     {//GEN-HEADEREND:event_saveTrimButtonActionPerformed
         
         // Send the JSON formatted trim command
-        ControlCommunicator.sendCommand("{\"command\":\"trim\"}");
+        RoverInterface.sendCommand("{\"command\":\"trim\"}");
         
     }//GEN-LAST:event_saveTrimButtonActionPerformed
 
@@ -444,7 +442,7 @@ private void drivingJoystickStateChanged(javax.swing.event.ChangeEvent evt)
         int servoAngle = (int) frontRightWheelSpinner.getValue();
 
         // Send the JSON formatted servo move command
-        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_WHEEL_FRONT_RIGHT) + ", \"angle\":" + (servoAngle) + "}");
+        RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_WHEEL_FRONT_RIGHT) + ", \"angle\":" + (servoAngle) + "}");
         
     }//GEN-LAST:event_frontRightWheelSpinnerStateChanged
 
@@ -455,7 +453,7 @@ private void drivingJoystickStateChanged(javax.swing.event.ChangeEvent evt)
         int servoAngle = (int) frontLeftWheelSpinner.getValue();
 
         // Send the JSON formatted servo move command
-        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_WHEEL_FRONT_LEFT) + ", \"angle\":" + (servoAngle) + "}");
+        RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_WHEEL_FRONT_LEFT) + ", \"angle\":" + (servoAngle) + "}");
         
     }//GEN-LAST:event_frontLeftWheelSpinnerStateChanged
 
@@ -466,7 +464,7 @@ private void drivingJoystickStateChanged(javax.swing.event.ChangeEvent evt)
         int servoAngle = (int) backRightWheelSpinner.getValue();
 
         // Send the JSON formatted servo move command
-        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_WHEEL_BACK_RIGHT) + ", \"angle\":" + (servoAngle) + "}");
+        RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_WHEEL_BACK_RIGHT) + ", \"angle\":" + (servoAngle) + "}");
         
     }//GEN-LAST:event_backRightWheelSpinnerStateChanged
 
@@ -477,7 +475,7 @@ private void drivingJoystickStateChanged(javax.swing.event.ChangeEvent evt)
         int servoAngle = (int) backLeftWheelSpinner.getValue();
 
         // Send the JSON formatted servo move command
-        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_WHEEL_BACK_LEFT) + ", \"angle\":" + (servoAngle) + "}");
+        RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_WHEEL_BACK_LEFT) + ", \"angle\":" + (servoAngle) + "}");
         
     }//GEN-LAST:event_backLeftWheelSpinnerStateChanged
 
@@ -494,7 +492,7 @@ private void drivingJoystickStateChanged(javax.swing.event.ChangeEvent evt)
         servoControlLabel.setText("" + servoAngle);
         
         // Send the JSON formatted servo move command
-        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (selectedServo) + ", \"angle\":" + (servoAngle) + "}");
+        RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (selectedServo) + ", \"angle\":" + (servoAngle) + "}");
         
     }//GEN-LAST:event_servoControlSliderStateChanged
 
@@ -524,6 +522,7 @@ private void drivingJoystickStateChanged(javax.swing.event.ChangeEvent evt)
     private javax.swing.JLabel backRightWheelLabel;
     private javax.swing.JSpinner backRightWheelSpinner;
     private rovercontroller.VirtualJoystick drivingJoystick;
+    private javax.swing.JToggleButton enableRcControlButton;
     private javax.swing.JLabel frontLeftWheelLabel;
     private javax.swing.JSpinner frontLeftWheelSpinner;
     private javax.swing.JLabel frontRightWheelLabel;
@@ -535,7 +534,6 @@ private void drivingJoystickStateChanged(javax.swing.event.ChangeEvent evt)
     private javax.swing.JPanel servoControlPanel2;
     private javax.swing.JSlider servoControlSlider;
     private javax.swing.JPanel steeringTrimPanel;
-    private javax.swing.JToggleButton toggleBrakesButton;
     private javax.swing.JToggleButton toggleRadialTurnButton;
     private javax.swing.JPanel virtualDrivingPanel;
     // End of variables declaration//GEN-END:variables

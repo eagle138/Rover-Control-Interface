@@ -1,15 +1,20 @@
-//******************************************************************************
+//==============================================================================
 // VT RoboOps 2015 - Team Vertex
 // 
-// NAME:    ControlCommunicator.java
+// NAME:    RoverInterface.java
 //
 // PURPOSE: Uses Java's TCP classes to handle communications to and from the
 //          rover. Provides methods to send and receive data as well as form
 //          command strings.
 //
 // AUTHOR:  S. Krauss
-//******************************************************************************
+//==============================================================================
 package rovercontroller;
+
+// Imported for TCP socket functionality
+import java.net.Socket;
+import java.net.ServerSocket;
+import java.net.InetSocketAddress;
 
 // Imported for reading from and writing to TCP sockets
 import java.io.BufferedReader;
@@ -17,20 +22,15 @@ import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
 
-// Imported for TCP socket functionality
-import java.net.Socket;
-import java.net.ServerSocket;
-import java.net.InetSocketAddress;
-
 // Imported for JSON parsing and writing
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-//******************************************************************************
+//==============================================================================
 //                              CLASS DEFINITION
-//******************************************************************************
-public class ControlCommunicator
+//==============================================================================
+public class RoverInterface
 {
 
     //--------------------------------------------------------------------------
@@ -38,7 +38,7 @@ public class ControlCommunicator
     //--------------------------------------------------------------------------
     
     // IP address of the rover as set up on the LogMeIn Hamachi network
-    public static String roverIpAddress = "25.125.146.63";
+    public static String roverIpAddress = "25.8.179.2";
 
     // Port that the rover is listening for commands on
     public static int roverListenPort = 5000;
@@ -177,15 +177,17 @@ public class ControlCommunicator
     //--------------------------------------------------------------------------
     // Name:        getCameraCommandString
     // Description: Returns a JSON format command string for the camera command
-    // Arguments:   - int width, width of video stream in pixels
+    // Arguments:   - int cameraNum, USB camera number to start, starting at 0
+    //              - String targAddress,address to stream UDP video to
+    //              - String targPort, port to stream UDP video to
+    //              - int width, width of video stream in pixels
     //              - int height, height of video stream in pixels
     //              - int fps, framerate of video stream in frames per second
-    //              - int maxBitrate, maximum bitrate of video stream in bits
+    //              - int bitrate, maximum bitrate of video stream in bits
     //                bits per second
-    //              - int iframeInt, Iframe interval in seconds
     // Returns:     - String, JSON formatted camera command string
     //--------------------------------------------------------------------------
-    public static String getCameraCommandString(int cameraNum, int protocol, int width, int height, int fps, int maxBitrate, int iframeInt)
+    public static String getCameraCommandString(int cameraNum, String targAddress, int targPort ,int width, int height, int fps, int bitrate)
     {
 
         // JSON command string to be returned
@@ -198,12 +200,12 @@ public class ControlCommunicator
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("command", "videostart");
             jsonObject.put("num", cameraNum);
-            jsonObject.put("proto", protocol);
+            jsonObject.put("host", cameraNum);
+            jsonObject.put("port", cameraNum);
             jsonObject.put("w", width);
             jsonObject.put("h", height);
             jsonObject.put("fps", fps);
-            jsonObject.put("bitrate", maxBitrate);
-            jsonObject.put("iframe", iframeInt);
+            jsonObject.put("bitrate", bitrate);
 
             // Write the JSON onject to a string
             StringWriter stringWriter = new StringWriter();
@@ -223,4 +225,4 @@ public class ControlCommunicator
 
     } // getCameraCommandString
 
-} // ControlCommunicator class
+} // RoverInterface class

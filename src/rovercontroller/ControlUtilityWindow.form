@@ -78,7 +78,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="toggleRadialTurnButton" max="32767" attributes="0"/>
-                      <Component id="toggleBrakesButton" max="32767" attributes="0"/>
+                      <Component id="enableRcControlButton" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -88,7 +88,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="toggleBrakesButton" min="-2" max="-2" attributes="0"/>
+                  <Component id="enableRcControlButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="toggleRadialTurnButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -97,12 +97,12 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JToggleButton" name="toggleBrakesButton">
+        <Component class="javax.swing.JToggleButton" name="enableRcControlButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Toggle Brakes"/>
+            <Property name="text" type="java.lang.String" value="Enable RC Control"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="toggleBrakesButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enableRcControlButtonActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JToggleButton" name="toggleRadialTurnButton">

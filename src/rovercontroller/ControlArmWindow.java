@@ -444,7 +444,7 @@ public class ControlArmWindow extends javax.swing.JFrame
         baseAzValueLabel.setText(Integer.toString(sliderValue));
         
         // Send the JSON formatted servo move command
-        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_AZIMUTH) + ", \"angle\":" + (sliderValue) + "}");
+        RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_AZIMUTH) + ", \"angle\":" + (sliderValue) + "}");
        
     }//GEN-LAST:event_baseAzSliderStateChanged
 
@@ -458,7 +458,7 @@ public class ControlArmWindow extends javax.swing.JFrame
         baseEleValueLabel.setText(Integer.toString(sliderValue));
         
         // Send the JSON formatted servo move command
-        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_ELEVATION) + ", \"angle\":" + (sliderValue) + "}");
+        RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_ELEVATION) + ", \"angle\":" + (sliderValue) + "}");
         
     }//GEN-LAST:event_baseEleSliderStateChanged
 
@@ -472,7 +472,7 @@ public class ControlArmWindow extends javax.swing.JFrame
         elbowValueLabel.setText(Integer.toString(sliderValue));
         
         // Send the JSON formatted servo move command
-        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_ELBOW) + ", \"angle\":" + (sliderValue) + "}");
+        RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_ELBOW) + ", \"angle\":" + (sliderValue) + "}");
         
     }//GEN-LAST:event_elbowSliderStateChanged
 
@@ -486,7 +486,7 @@ public class ControlArmWindow extends javax.swing.JFrame
         wristEleValueLabel.setText(Integer.toString(sliderValue));
         
         // Send the JSON formatted servo move command
-        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ELEVATION) + ", \"angle\":" + (sliderValue) + "}");
+        RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ELEVATION) + ", \"angle\":" + (sliderValue) + "}");
         
     }//GEN-LAST:event_wristEleSliderStateChanged
 
@@ -500,7 +500,7 @@ public class ControlArmWindow extends javax.swing.JFrame
         wristRotValueLabel.setText(Integer.toString(sliderValue));
         
         // Send the JSON formatted servo move command
-        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ROTATION) + ", \"angle\":" + (sliderValue) + "}");
+        RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ROTATION) + ", \"angle\":" + (sliderValue) + "}");
         
     }//GEN-LAST:event_wristRotSliderStateChanged
 
@@ -514,7 +514,7 @@ public class ControlArmWindow extends javax.swing.JFrame
         clawValueLabel.setText(Integer.toString(sliderValue));
         
         // Send the JSON formatted servo move command
-        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_CLAW) + ", \"angle\":" + (sliderValue) + "}");
+        RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_CLAW) + ", \"angle\":" + (sliderValue) + "}");
         
     }//GEN-LAST:event_clawSliderStateChanged
 
@@ -533,20 +533,20 @@ public class ControlArmWindow extends javax.swing.JFrame
         {
             
             // Move the base elevation servo
-            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_ELEVATION) + ", \"angle\":" + (baseEleValue) + "}");
+            RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_ELEVATION) + ", \"angle\":" + (baseEleValue) + "}");
             Thread.sleep(2000);
             
             // Move the elbow servo
-            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_ELBOW) + ", \"angle\":" + (elbowValue) + "}");
+            RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_ELBOW) + ", \"angle\":" + (elbowValue) + "}");
             Thread.sleep(2000);
             
             // Move the base azimuth servo
-            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_AZIMUTH) + ", \"angle\":" + (baseAzValue) + "}");
+            RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_AZIMUTH) + ", \"angle\":" + (baseAzValue) + "}");
             Thread.sleep(2000);
             
             // Move the wrist servos
-            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ELEVATION) + ", \"angle\":" + (wristEleValue) + "}");
-            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ROTATION) + ", \"angle\":" + (wristRotValue) + "}");
+            RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ELEVATION) + ", \"angle\":" + (wristEleValue) + "}");
+            RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ROTATION) + ", \"angle\":" + (wristRotValue) + "}");
             
         } // try
         catch(Exception ex)
@@ -561,7 +561,8 @@ public class ControlArmWindow extends javax.swing.JFrame
 
     private void deployButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_deployButtonActionPerformed
     {//GEN-HEADEREND:event_deployButtonActionPerformed
-                
+             
+        /*
         // Deploy position values
         int baseAzValue =   -50;
         int baseEleValue =  15;
@@ -573,20 +574,20 @@ public class ControlArmWindow extends javax.swing.JFrame
         {
             
             // Move the base azimuth servo
-            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_AZIMUTH) + ", \"angle\":" + (baseAzValue) + "}");
+            RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_AZIMUTH) + ", \"angle\":" + (baseAzValue) + "}");
             Thread.sleep(2000);
                         
             // Move the elbow servo
-            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_ELBOW) + ", \"angle\":" + (elbowValue) + "}");
+            RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_ELBOW) + ", \"angle\":" + (elbowValue) + "}");
             Thread.sleep(2000);
             
             // Move the base elevation servo
-            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_ELEVATION) + ", \"angle\":" + (baseEleValue) + "}");
+            RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_ELEVATION) + ", \"angle\":" + (baseEleValue) + "}");
             Thread.sleep(2000);
 
             // Move the wrist servos
-            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ELEVATION) + ", \"angle\":" + (wristEleValue) + "}");
-            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ROTATION) + ", \"angle\":" + (wristRotValue) + "}");
+            RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ELEVATION) + ", \"angle\":" + (wristEleValue) + "}");
+            RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ROTATION) + ", \"angle\":" + (wristRotValue) + "}");
             
         } // try
         catch(Exception ex)
@@ -596,6 +597,7 @@ public class ControlArmWindow extends javax.swing.JFrame
             System.out.println(ex);
             
         } // catch
+        */
 
     }//GEN-LAST:event_deployButtonActionPerformed
 
@@ -613,20 +615,20 @@ public class ControlArmWindow extends javax.swing.JFrame
         {
             
             // Move the base elevation servo
-            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_ELEVATION) + ", \"angle\":" + (baseEleValue) + "}");
+            RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_ELEVATION) + ", \"angle\":" + (baseEleValue) + "}");
             Thread.sleep(4000);
             
             // Move the base azimuth servo
-            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_AZIMUTH) + ", \"angle\":" + (baseAzValue) + "}");
+            RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_BASE_AZIMUTH) + ", \"angle\":" + (baseAzValue) + "}");
             Thread.sleep(2000);
             
             // Move the elbow servo
-            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_ELBOW) + ", \"angle\":" + (elbowValue) + "}");
+            RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_ELBOW) + ", \"angle\":" + (elbowValue) + "}");
             Thread.sleep(2000);
         
             // Move the wrist servos
-            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ELEVATION) + ", \"angle\":" + (wristEleValue) + "}");
-            ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ROTATION) + ", \"angle\":" + (wristRotValue) + "}");
+            RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ELEVATION) + ", \"angle\":" + (wristEleValue) + "}");
+            RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_WRIST_ROTATION) + ", \"angle\":" + (wristRotValue) + "}");
             
         } // try
         catch(Exception ex)
@@ -646,7 +648,7 @@ public class ControlArmWindow extends javax.swing.JFrame
         int clawValue = -110;
         
         // Send the JSON formatted servo move command
-        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_CLAW) + ", \"angle\":" + (clawValue) + "}");
+        RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_CLAW) + ", \"angle\":" + (clawValue) + "}");
         
     }//GEN-LAST:event_closeButtonActionPerformed
 
@@ -657,7 +659,7 @@ public class ControlArmWindow extends javax.swing.JFrame
         int clawValue = 62;
         
         // Send the JSON formatted servo move command
-        ControlCommunicator.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_CLAW) + ", \"angle\":" + (clawValue) + "}");
+        RoverInterface.sendCommand("{\"command\":\"servo\", \"servonum\":" + (SERVO_ARM_CLAW) + ", \"angle\":" + (clawValue) + "}");
         
     }//GEN-LAST:event_openButtonActionPerformed
 

@@ -44,8 +44,8 @@ public class ControlStreamInterface
         {
             
             // Form the command used to start gstreamer to receive the video stream
-            // String gstreamerCommand = gstreamerPath + " udpsrc port=" + videoReceivePort + " ! h264parse ! avdec_h264 ! autovideosink sync=false";
-            String gstreamerCommand = gstreamerPath + " udpsrc port=" + videoReceivePort + " ! application/x-rtp, payload=96 ! rtph264depay ! h264parse ! avdec_h264 ! autovideosink sync=false";
+            String gstreamerCommand = gstreamerPath + " udpsrc port=" + videoReceivePort + " ! h264parse ! avdec_h264 ! autovideosink sync=false";
+            //String gstreamerCommand = gstreamerPath + " udpsrc port=" + videoReceivePort + " ! application/x-rtp, payload=96 ! rtph264depay ! h264parse ! avdec_h264 ! autovideosink sync=false";
            
             // Get the current runtime to execute the gstreamer command
             Runtime runtime = Runtime.getRuntime();

@@ -203,7 +203,8 @@ public class ControlMainWindow extends javax.swing.JFrame
     //--------------------------------------------------------------------------
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         roverConnectionStatusPanel = new javax.swing.JPanel();
         roverConnectionStatusDisplayLabel = new javax.swing.JTextField();
@@ -369,24 +370,30 @@ public class ControlMainWindow extends javax.swing.JFrame
         windowsMenu.setText("Open");
 
         armControlWindowItem.setText("Arm Control Window");
-        armControlWindowItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        armControlWindowItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 armControlWindowItemActionPerformed(evt);
             }
         });
         windowsMenu.add(armControlWindowItem);
 
         videoControlWindowItem.setText("Video Control Window");
-        videoControlWindowItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        videoControlWindowItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 videoControlWindowItemActionPerformed(evt);
             }
         });
         windowsMenu.add(videoControlWindowItem);
 
         utilityControlWindowItem.setText("Utility Control Window");
-        utilityControlWindowItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        utilityControlWindowItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 utilityControlWindowItemActionPerformed(evt);
             }
         });

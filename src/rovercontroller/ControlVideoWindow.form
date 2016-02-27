@@ -32,8 +32,8 @@
                   <Component id="videoStreamControlPanel" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="cameraMastControlPanel" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="cameraMastControlPanel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -41,16 +41,15 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="cameraMastControlPanel" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="videoStreamControlPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="audioStreamControlPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -77,37 +76,35 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="stopStreamButton" alignment="0" max="32767" attributes="0"/>
-                              <Component id="startStreamButton" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
+                          <Component id="videoCameraLabel" min="-2" pref="77" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                          <Component id="videoCameraDropdown" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="stopStreamButton" alignment="0" max="32767" attributes="0"/>
+                          <Component id="startStreamButton" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="iframeLabel" alignment="0" max="32767" attributes="0"/>
                                       <Component id="bitrateLabel" alignment="0" max="32767" attributes="0"/>
                                       <Component id="framerateLabel" alignment="0" max="32767" attributes="0"/>
                                       <Component id="resolutionLabel" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="framerateDropdown" max="32767" attributes="0"/>
-                                      <Component id="bitrateField" max="32767" attributes="0"/>
-                                      <Component id="resolutionDropdown" alignment="0" pref="119" max="32767" attributes="0"/>
-                                      <Component id="iframeField" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="portLabel" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="framerateDropdown" max="32767" attributes="0"/>
+                                  <Component id="bitrateField" max="32767" attributes="0"/>
+                                  <Component id="resolutionDropdown" alignment="0" pref="119" max="32767" attributes="0"/>
+                                  <Component id="portField" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="videoCameraLabel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="protocolLabel" pref="77" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="videoCameraDropdown" max="32767" attributes="0"/>
-                              <Component id="protocolDropdown" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="hostLabel" min="-2" pref="77" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="hostField" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -119,13 +116,18 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="videoCameraLabel" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                      <Component id="videoCameraDropdown" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="hostLabel" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="hostField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="protocolLabel" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="protocolDropdown" alignment="3" max="32767" attributes="0"/>
+                      <Component id="portLabel" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="portField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="videoCameraLabel" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
+                      <Component id="videoCameraDropdown" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -141,11 +143,6 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="bitrateLabel" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="bitrateField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="iframeLabel" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="iframeField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="startStreamButton" min="-2" max="-2" attributes="0"/>
@@ -215,15 +212,15 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="17">
-                <StringItem index="0" value="160x90"/>
-                <StringItem index="1" value="160x120"/>
-                <StringItem index="2" value="176x144"/>
-                <StringItem index="3" value="320x180"/>
-                <StringItem index="4" value="320x240"/>
-                <StringItem index="5" value="352x288"/>
-                <StringItem index="6" value="432x240"/>
-                <StringItem index="7" value="640x360"/>
-                <StringItem index="8" value="640x480"/>
+                <StringItem index="0" value="640x480"/>
+                <StringItem index="1" value="160x90"/>
+                <StringItem index="2" value="160x120"/>
+                <StringItem index="3" value="176x144"/>
+                <StringItem index="4" value="320x180"/>
+                <StringItem index="5" value="320x240"/>
+                <StringItem index="6" value="352x288"/>
+                <StringItem index="7" value="432x240"/>
+                <StringItem index="8" value="640x360"/>
                 <StringItem index="9" value="800x448"/>
                 <StringItem index="10" value="800x600"/>
                 <StringItem index="11" value="864x480"/>
@@ -236,38 +233,28 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="protocolLabel">
+        <Component class="javax.swing.JLabel" name="hostLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Courier New" size="11" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Protocol:"/>
+            <Property name="text" type="java.lang.String" value="Host:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="protocolDropdown">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
-                <StringItem index="0" value="UDP"/>
-                <StringItem index="1" value="TCP"/>
-              </StringArray>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="iframeLabel">
+        <Component class="javax.swing.JLabel" name="portLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Courier New" size="11" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Iframe:"/>
+            <Property name="text" type="java.lang.String" value="Port:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="iframeField">
+        <Component class="javax.swing.JTextField" name="portField">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Courier New" size="11" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="1000"/>
+            <Property name="text" type="java.lang.String" value="1338"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="videoCameraDropdown">
@@ -306,6 +293,14 @@
             </Property>
           </Properties>
         </Component>
+        <Component class="javax.swing.JTextField" name="hostField">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Courier New" size="11" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="192.168.0.139"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="cameraMastControlPanel">
@@ -329,7 +324,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="cameraControlJoystick" max="32767" attributes="0"/>
-                      <Component id="mastDeployButton" alignment="1" pref="390" max="32767" attributes="0"/>
+                      <Component id="mastDeployButton" alignment="1" pref="385" max="32767" attributes="0"/>
                       <Component id="mastStowButton" alignment="1" max="32767" attributes="0"/>
                       <Component id="cameraHomeButton" alignment="0" max="32767" attributes="0"/>
                   </Group>

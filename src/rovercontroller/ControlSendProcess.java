@@ -76,13 +76,13 @@ public class ControlSendProcess extends Thread
             GamepadInterface gamepad = new GamepadInterface();
             
             // Only gather input and send it if rover connection is established
-            if (!ControlCommunicator.roverIpAddress.equalsIgnoreCase("None"))
+            if (!RoverInterface.roverIpAddress.equalsIgnoreCase("None"))
             {
 
                 // If a joystick is connected
                 if (joystick.connected == true)
                 {
-                    
+                    /*
                     // Get the joystick axis values
                     double joystickXValue = joystick.getComponentValue(2);
                     double joystickYValue = joystick.getComponentValue(1);
@@ -103,7 +103,7 @@ public class ControlSendProcess extends Thread
                         prevSteeringAngle = steeringAngle;
 
                         // Get the JSON formatted steer command and send it
-                        ControlCommunicator.sendCommand("{\"command\":\"steer\", \"angle\":" + steeringAngle + "}");
+                        RoverInterface.sendCommand("{\"command\":\"steer\", \"angle\":" + steeringAngle + "}");
 
                     } // if
 
@@ -114,7 +114,51 @@ public class ControlSendProcess extends Thread
                         prevMotorSpeed = motorSpeed;
 
                         // Send the JSON formatted motor speed command
-                        ControlCommunicator.sendCommand("{\"command\":\"motorspeed\", \"speed\":" + motorSpeed + "}");
+                        RoverInterface.sendCommand("{\"command\":\"motorspeed\", \"speed\":" + motorSpeed + "}");
+
+                    } // if
+                    */
+                    
+                    // Get the joystick axis values
+                    double joystickXValue = joystick.getComponentValue(2) + 0.0;
+                    double joystickYValue = joystick.getComponentValue(1) + 0.2;
+                    
+                    if(joystickXValue > 1.0)
+                    {
+                        joystickXValue = 1.0;
+                    }
+                    else if(joystickXValue < -1.0)
+                    {
+                        joystickXValue = -1.0;
+                    }
+                         
+                    if(joystickYValue > 1.0)
+                    {
+                        joystickYValue = 1.0;
+                    }
+                    else if(joystickYValue < -1.0)
+                    {
+                        joystickYValue = -1.0;
+                    }
+                    
+                    // Ignore joystick values under a certain value
+                    if ((joystickXValue < joystickMinValue) && (joystickXValue > -joystickMinValue)) joystickXValue = 0;
+                    if ((joystickYValue < joystickMinValue) && (joystickYValue > -joystickMinValue)) joystickYValue = 0;  
+    
+                    // Calculate the throttle and steering angle percentage from
+                    // the joystick axis values
+                    double anglePercent    = round(joystickXValue, 2) * 100.0;
+                    double throttlePercent = round(joystickYValue, 2) * -100.0;
+
+                    // If either value has changed
+                    if ((anglePercent != prevSteeringAngle) || (throttlePercent != prevMotorSpeed))
+                    {
+
+                        prevSteeringAngle = anglePercent;
+                        prevMotorSpeed = throttlePercent;
+
+                        // Get the JSON formatted steer command and send it
+                        RoverInterface.sendCommand("{\"command\":\"drive\", \"ang\":" + anglePercent + ", \"th\":" + throttlePercent + "}");
 
                     } // if
                     
@@ -145,7 +189,7 @@ public class ControlSendProcess extends Thread
                     {
 
                         // Send the arm position increment command
-                        ControlCommunicator.sendCommand("{\"command\":\"clawinc\", \"dx\":" + (dx) + ", \"dy\":" + (dy) + ", \"dz\":" + (dz) + "}");
+                        RoverInterface.sendCommand("{\"command\":\"clawinc\", \"dx\":" + (dx) + ", \"dy\":" + (dy) + ", \"dz\":" + (dz) + "}");
 
                     } // if
                     

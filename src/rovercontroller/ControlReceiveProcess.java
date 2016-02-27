@@ -38,14 +38,14 @@ public class ControlReceiveProcess extends Thread
         {
 
             // Receive the command string from the rover over TCP
-            String receivedCommandString = ControlCommunicator.receiveCommand();
+            String receivedCommandString = RoverInterface.receiveCommand();
             System.out.println(receivedCommandString);
 
             if (receivedCommandString != null)
             {
 
                 // Parse the JSON formatted string into a JSONObject
-                JSONObject receivedCommandJson = ControlCommunicator.parseJsonString(receivedCommandString);
+                JSONObject receivedCommandJson = RoverInterface.parseJsonString(receivedCommandString);
 
                 // Get the name of the command received
                 String commandType = (String) receivedCommandJson.get("command");
@@ -62,7 +62,7 @@ public class ControlReceiveProcess extends Thread
                     Double cpu = (Double) receivedCommandJson.get("cpu");
 
                     // Update the GUI with the received information
-                    ControlMain.mainWindow.setConnected(ControlCommunicator.roverIpAddress);
+                    ControlMain.mainWindow.setConnected(RoverInterface.roverIpAddress);
                     ControlMain.mainWindow.setGpsData(lat, lon, alt, spd);
                     ControlMain.mainWindow.setCpuData(cpu);
                     
